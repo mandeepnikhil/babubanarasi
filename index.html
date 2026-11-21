@@ -79,7 +79,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&family=Tiro+Devanagari+Hindi&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=17" />
+  <link rel="stylesheet" href="styles.css?v=18" />
   <link rel="stylesheet" href="shop.css?v=9" />
 </head>
 <body data-page="home">
@@ -109,15 +109,15 @@
       <nav class="nav nav-left" aria-label="Primary">
         <a href="shop.html" data-hi="दुकान">Shop</a>
         <a href="#weaves" data-hi="बनारसी साड़ियाँ">The Weaves</a>
-        <a href="#experiences" data-hi="अनुभव">Experiences</a>
+        <a href="#stays" data-hi="ठहराव">Stays</a>
       </nav>
       <a href="#top" class="brand" aria-label="Babu Banarasi home">
         <img class="brand-mark" src="brand/logo-mark.svg" alt="" width="40" height="64" />
         <span class="brand-text"><span class="brand-en">Babu Banarasi</span><span class="brand-hi" lang="hi">बाबू बनारसी</span></span>
       </a>
       <nav class="nav nav-right" aria-label="Secondary">
-        <a href="#stays" data-hi="ठहराव">Stays</a>
-        <a href="#festivals" data-hi="त्योहार">Festivals</a>
+        <a href="#experiences" data-hi="अनुभव">Experiences</a>
+        <a href="#journal" data-hi="जर्नल">Journal</a>
         <a href="#contact" class="nav-cta" data-hi="संपर्क">Enquire</a>
         <a href="#" class="bag-btn nav-bag" aria-label="Open your bag">Bag <span class="bag-count" hidden>0</span></a>
       </nav>
@@ -130,17 +130,24 @@
       </button>
     </div>
     <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile">
-      <a href="shop.html" data-hi="दुकान">Shop sarees</a>
-      <a href="#day" data-hi="काशी का एक दिन">A Day in Kashi</a>
-      <a href="#weaves" data-hi="बनारसी साड़ियाँ">The Weaves</a>
-      <a href="#khana" data-hi="बनारसी खाना">Banarasi Khana</a>
-      <a href="#experiences" data-hi="अनुभव">Experiences</a>
-      <a href="#festivals" data-hi="त्योहार">Festivals</a>
-      <a href="#sarnath" data-hi="सारनाथ">Sarnath</a>
-      <a href="#stays" data-hi="ठहराव">Stays</a>
-      <a href="#pantry" data-hi="रसोई भंडार">Pantry</a>
-      <a href="#contact" data-hi="संपर्क">Enquire</a>
-      <a href="login.html" class="account-link"><span class="account-label">Account</span></a>
+      <a href="shop.html" class="mn-main" data-hi="साड़ियाँ ख़रीदें">Shop sarees</a>
+      <a href="#weaves" class="mn-main" data-hi="बनारसी साड़ियाँ">The Weaves</a>
+      <a href="#stays" class="mn-main" data-hi="ठहराव">Stays</a>
+      <a href="#experiences" class="mn-main" data-hi="अनुभव">Experiences</a>
+      <a href="#journal" class="mn-main" data-hi="जर्नल">Journal</a>
+      <p class="mn-label" data-hi="बनारस घूमिए">Explore Banaras</p>
+      <div class="mn-more">
+        <a href="#day" data-hi="काशी का एक दिन">A Day in Kashi</a>
+        <a href="#khana" data-hi="बनारसी खाना">Banarasi Khana</a>
+        <a href="#festivals" data-hi="त्योहार">Festivals</a>
+        <a href="#sarnath" data-hi="सारनाथ">Sarnath</a>
+        <a href="#pantry" data-hi="रसोई भंडार">Pantry</a>
+      </div>
+      <div class="mn-foot">
+        <a href="#contact" data-hi="संपर्क">Enquire</a>
+        <a href="login.html" class="account-link"><span class="account-label">Account</span></a>
+        <button type="button" class="mn-bells" aria-pressed="false">Temple bells: <span>off</span></button>
+      </div>
     </nav>
   </header>
 
@@ -1001,7 +1008,7 @@
   <script src="config.js?v=7"></script>
   <script src="auth.js?v=3"></script>
   <script src="shop.js?v=7"></script>
-  <script src="script.js?v=9"></script>
+  <script src="script.js?v=10"></script>
   <script src="interactions.js?v=4"></script>
 </body>
 </html>

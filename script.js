@@ -187,7 +187,17 @@ const SITE = {
     soundBtn.setAttribute("aria-pressed", String(on));
     soundBtn.setAttribute("aria-label", on ? "Stop temple bells" : "Play temple bells");
     on ? startSound() : stopSound();
+    syncMenuBells();
   });
+  // Phone: the sound switch lives in the menu, labelled in words
+  const menuBells = document.querySelector(".mn-bells");
+  function syncMenuBells() {
+    if (!menuBells || !soundBtn) return;
+    const on = soundBtn.getAttribute("aria-pressed") === "true";
+    menuBells.setAttribute("aria-pressed", String(on));
+    menuBells.querySelector("span").textContent = on ? "on" : "off";
+  }
+  menuBells?.addEventListener("click", () => soundBtn?.click());
 
   /* ---------- A Day in Kashi: colour and image follow the hour ---------- */
   const day = document.querySelector(".day");

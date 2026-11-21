@@ -957,3 +957,23 @@ body::after { content: ""; position: fixed; inset: 0; pointer-events: none; z-in
   .hs-head { flex-direction: column; align-items: start; gap: 12px; margin-bottom: 24px; }
   .hs-assure { flex-direction: column; align-items: start; gap: 8px; margin-top: 28px; }
 }
+
+/* ---------- Phone menu: main paths, then "Explore Banaras" ---------- */
+@media (max-width: 1080px) {
+  .menu-open .mobile-nav { max-height: 92vh; max-height: 92svh; overflow-y: auto; }
+  .mn-label { margin: 0; padding: 18px 16px 6px; text-align: center; font-size: .68rem; letter-spacing: .24em; text-transform: uppercase; color: var(--gold); }
+  .mn-more { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid rgba(176,141,76,.2); }
+  .mobile-nav .mn-more a { font-family: var(--sans, inherit); font-size: .95rem; padding: 12px; border-bottom: 0; }
+  .mn-foot { display: flex; justify-content: center; flex-wrap: wrap; gap: 4px 18px; padding: 12px 16px 18px; }
+  .mobile-nav .mn-foot a { font-family: inherit; font-size: .82rem; letter-spacing: .14em; text-transform: uppercase; padding: 8px 4px; border-bottom: 0; }
+  .mn-bells { background: none; border: 0; font: inherit; font-size: .82rem; letter-spacing: .14em; text-transform: uppercase; color: var(--burgundy); padding: 8px 4px; cursor: pointer; }
+  .mn-bells[aria-pressed="true"] span { color: var(--gold); }
+}
+@media (min-width: 1081px) { .mn-label, .mn-more, .mn-foot { display: none; } }
+
+/* ---------- Phone top bar: WhatsApp viewing on the left; account and language on the right ---------- */
+@media (max-width: 560px) {
+  .now { display: none; }
+  .topbar-mid { display: block; text-align: left; overflow: hidden; text-overflow: ellipsis; }
+  .topbar-tools .sound-toggle { display: none; }
+}
