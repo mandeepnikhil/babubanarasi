@@ -16,7 +16,7 @@ window.BB_CONFIG = {
   LIVE: true,
   SUPABASE_URL: "https://vudfuwpyoczheisrsxbf.supabase.co",
   SUPABASE_ANON_KEY: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ1ZGZ1d3B5b2N6aGVpc3JzeGJmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTUyNzQ0MjMsImV4cCI6MjExMDg1MDQyM30.EnMtrVMgunAeBaBxoGH9qjaGXj3r5RB8QSIY8Oll72c",
-  RAZORPAY_KEY_ID: "rzp_live_U2u29RDBpeaRGa",
+  RAZORPAY_KEY_ID: "rzp_live_U2xLs04hsyAl5v",
   // Which sign-in methods to show (turn each on in Supabase → Authentication → Providers first)
   AUTH_METHODS: { google: true, microsoft: false, emailCode: true, password: true, phone: false }, // microsoft, phone: switch on once each provider is set up in Supabase
 };
