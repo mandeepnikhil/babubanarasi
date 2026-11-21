@@ -15,6 +15,13 @@
     document.head.appendChild(s);
   });
 
+  let lockChain = Promise.resolve();
+  const tabLock = (_name, _timeout, fn) => {
+    const run = lockChain.then(() => fn());
+    lockChain = run.catch(() => {});
+    return run;
+  };
+
   const state = { configured, client: null, user: null, profile: null };
   const listeners = [];
   const emit = () => listeners.forEach((fn) => { try { fn(state); } catch (e) {} });
@@ -30,7 +37,8 @@
     try {
       await loadScript(SUPABASE_CDN);
       state.client = window.supabase.createClient(cfg.SUPABASE_URL, cfg.SUPABASE_ANON_KEY, {
-        auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true },
+        // In-tab lock: a frozen background tab can't hold up sign-in in this one
+        auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true, lock: tabLock },
       });
       const { data } = await state.client.auth.getSession();
       state.user = data.session?.user || null;
