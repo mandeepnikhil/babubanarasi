@@ -4,7 +4,7 @@
    =========================================================== */
 const SHOP = {
   WHATSAPP_NUMBER: "919260984531",      // orders arrive here
-  RAZORPAY_KEY: "",                     // your Razorpay Key ID, e.g. "rzp_live_xxxxx". Empty = online payment shown as "coming soon"
+  // Razorpay and accounts are configured in config.js (public keys) and Supabase (secret key)
   SHIPPING_INDIA: 0,                    // flat shipping within India in ₹ (0 = free)
   GIFT_WRAP: 0,                         // gift wrap price in ₹ (0 = free)
   POLICY: {
@@ -24,6 +24,10 @@ const SHOP = {
     set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} },
   };
   const page = document.body.dataset.page;
+  const CFG = window.BB_CONFIG || {};
+  const AUTH = window.BB_AUTH || null;
+  const backendReady = () => !!(CFG.SUPABASE_URL && CFG.SUPABASE_ANON_KEY && AUTH && AUTH.state.configured);
+  const onlineReady = () => backendReady() && !!CFG.RAZORPAY_KEY_ID;
   let PRODUCTS = [];
   const byId = (id) => PRODUCTS.find((p) => p.id === id);
   const canBuy = (p) => p.stock > 0 || p.madeToOrder;
@@ -297,7 +301,7 @@ const SHOP = {
       ["Handloom, from the weaver's home", "No middlemen, no powerloom."],
       [SHOP.SHIPPING_INDIA === 0 ? "Free shipping in India" : `Shipping in India ${inr(SHOP.SHIPPING_INDIA)}`, "Insured, tracked courier."],
       ["Live video before it ships", "See the real piece, in daylight."],
-      [SHOP.RAZORPAY_KEY ? "Secure online payment" : "Pay by UPI link", SHOP.RAZORPAY_KEY ? "UPI, cards and netbanking." : "Confirmed with you on WhatsApp."],
+      [onlineReady() ? "Secure online payment" : "Pay by UPI link", onlineReady() ? "UPI, cards and netbanking." : "Confirmed with you on WhatsApp."],
     ];
     root.innerHTML = `
       <div class="pd-gallery">
@@ -369,28 +373,57 @@ const SHOP = {
 
   /* ---------- Checkout ---------- */
   const STATES = ["Andaman and Nicobar Islands", "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chandigarh", "Chhattisgarh", "Dadra and Nagar Haveli and Daman and Diu", "Delhi", "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jammu and Kashmir", "Jharkhand", "Karnataka", "Kerala", "Ladakh", "Lakshadweep", "Madhya Pradesh", "Maharashtra", "Manipur", "Meghalaya", "Mizoram", "Nagaland", "Odisha", "Puducherry", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Telangana", "Tripura", "Uttar Pradesh", "Uttarakhand", "West Bengal"];
-  function initCheckout() {
+  async function initCheckout() {
     const form = $("#checkout-form"), summary = $("#summary");
     const stateSel = $("#state");
     stateSel.innerHTML = `<option value="">Select state</option>` + STATES.map((s) => `<option>${s}</option>`).join("");
+    const setField = (k, v) => { const el = form.elements[k]; if (el && v && el.type !== "radio" && el.type !== "checkbox") el.value = v; };
     const saved = store.get("bb-customer", null);
-    if (saved) Object.entries(saved).forEach(([k, v]) => { const el = form.elements[k]; if (el && el.type !== "radio" && el.type !== "checkbox") el.value = v; });
+    if (saved) Object.entries(saved).forEach(([k, v]) => setField(k, v));
+
+    // Accounts: optional sign-in, prefill from the saved profile
+    const auth = AUTH ? await AUTH.ready : null;
+    const user = auth?.user || null;
+    if (backendReady()) {
+      const bar = document.createElement("div");
+      bar.className = "co-account";
+      if (user) {
+        const p = auth.profile || {}, a = p.address || {};
+        setField("name", p.full_name || user.user_metadata?.full_name || user.user_metadata?.name);
+        setField("phone", (p.phone || user.phone || "").replace(/^\+91/, ""));
+        setField("email", user.email || p.email);
+        ["address1", "address2", "city", "state", "pincode"].forEach((k) => setField(k, a[k]));
+        bar.innerHTML = `<span>Signed in as <strong>${esc(AUTH.firstName() || user.email || user.phone || "you")}</strong></span>
+          <label class="co-check"><input type="checkbox" name="saveaddr" checked /> <span>Save these details to my account</span></label>`;
+      } else {
+        bar.innerHTML = `<span>Have an account? <a href="login.html?next=checkout.html">Sign in</a> for saved details and order tracking, or carry on as a guest.</span>`;
+      }
+      form.prepend(bar);
+    }
 
     const online = $("#pay-online");
-    if (!SHOP.RAZORPAY_KEY) {
-      online.disabled = true;
-      online.closest(".pay-opt").classList.add("is-off");
-      $("#pay-online-note").textContent = "Coming soon. For now, order on WhatsApp and we'll send you a secure UPI/payment link.";
-    }
+    const hasSample = () => cartItems().some(({ p }) => p.sample);
+    const isIndia = () => form.elements.country.value === "India";
+    const onlineBlock = () =>
+      !onlineReady() ? "soon" : hasSample() ? "sample" : !isIndia() ? "intl" : "";
+    const BLOCK_MSG = {
+      soon: "Online payment is coming soon. Order on WhatsApp and we'll send a secure payment link.",
+      sample: "Sample pieces can't be paid for online. Order on WhatsApp and we'll show you what's on the loom.",
+      intl: "For orders outside India, we confirm shipping on WhatsApp first.",
+    };
+    const syncOnline = () => {
+      const b = onlineBlock();
+      online.disabled = !!b;
+      online.closest(".pay-opt").classList.toggle("is-off", !!b);
+      $("#pay-online-note").textContent = b ? BLOCK_MSG[b] : "UPI, cards and netbanking via Razorpay. Your payment is verified before we confirm.";
+      if (b && online.checked) $("#pay-wa").checked = true;
+    };
     online.closest(".pay-opt").addEventListener("click", () => {
       if (!online.disabled) return;
-      toast(!SHOP.RAZORPAY_KEY
-        ? "Online payment is coming soon. Order on WhatsApp and we'll send a secure payment link."
-        : "For orders outside India, we confirm shipping on WhatsApp first.");
+      toast(BLOCK_MSG[onlineBlock()] || BLOCK_MSG.soon);
       $("#pay-wa").focus();
     });
 
-    const isIndia = () => form.elements.country.value === "India";
     const totals = () => {
       const sub = subtotal();
       const ship = isIndia() ? SHOP.SHIPPING_INDIA : null;
@@ -408,7 +441,7 @@ const SHOP = {
         <h2>Order summary</h2>
         <ul class="sum-lines">${items.map(({ p, qty }) => `
           <li><span class="sum-img"><img src="${p.images[0]}" alt="" /><b>${qty}</b></span>
-            <span class="sum-name">${esc(p.name)}<small>${esc(p.fabric)}${p.stock === 0 && p.madeToOrder ? " · made to order" : ""}</small></span>
+            <span class="sum-name">${esc(p.name)}<small>${esc(p.fabric)}${p.stock === 0 && p.madeToOrder ? " · made to order" : ""}${p.sample ? " · sample" : ""}</small></span>
             <span class="sum-price">${inr(p.price * qty)}</span></li>`).join("")}
         </ul>
         <dl class="sum-totals">
@@ -425,14 +458,8 @@ const SHOP = {
       $("#state-wrap").hidden = !india;
       $("#region-wrap").hidden = india;
       form.elements.pincode.placeholder = india ? "6-digit PIN code" : "Postal code";
-      if (!india) {
-        $("#pay-wa").checked = true;
-        online.disabled = true;
-        $("#intl-note").hidden = false;
-      } else {
-        online.disabled = !SHOP.RAZORPAY_KEY;
-        $("#intl-note").hidden = true;
-      }
+      $("#intl-note").hidden = india;
+      syncOnline();
       syncButton();
       renderSummary();
     };
@@ -468,7 +495,7 @@ const SHOP = {
     };
     Object.keys(rules).forEach((n) => form.elements[n].addEventListener("blur", () => form.elements[n].value && check(n)));
 
-    const orderId = () => {
+    const localOrderId = () => {
       const d = new Date();
       const pad = (n) => String(n).padStart(2, "0");
       return `BB${String(d.getFullYear()).slice(2)}${pad(d.getMonth() + 1)}${pad(d.getDate())}-${Math.random().toString(36).slice(2, 6).toUpperCase()}`;
@@ -494,19 +521,30 @@ const SHOP = {
         paymentLine,
       ].join("\n");
     };
-    const confirmScreen = (id, link, paid) => {
+    const confirmScreen = (id, link, kind) => {
+      // kind: "whatsapp" | "paid" | "check"
       store.set("bb-last-order", { id, at: Date.now() });
       cart = []; saveCart();
+      const copy = {
+        whatsapp: ["Almost done", "Press send in WhatsApp to place your order.",
+          "We've opened WhatsApp with your order ready to send. Once we receive it, we'll confirm availability, show you the piece on video, and send a secure UPI/payment link.",
+          "Open WhatsApp again"],
+        paid: ["Payment received", "Thank you. Your order is confirmed.",
+          "Your payment is verified. We'll share a video of your saree before it ships, and message you the tracking number on WhatsApp.",
+          "Message us on WhatsApp"],
+        check: ["Payment received", "Thank you. We're confirming your payment.",
+          "Razorpay has your payment, but we couldn't confirm it automatically just now. We'll check it and message you shortly. Nothing more to pay.",
+          "Message us on WhatsApp"],
+      }[kind];
       $(".co-grid").innerHTML = `
         <div class="co-done">
           <svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M20 33l8 8 16-18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <p class="kicker">${paid ? "Payment received" : "Almost done"}</p>
-          <h2>${paid ? "Thank you. Your order is confirmed." : "Press send in WhatsApp to place your order."}</h2>
-          <p class="co-id">Order <strong>${id}</strong></p>
-          <p>${paid
-            ? "We've also opened WhatsApp with your order details so you have a record. We'll share a video of your saree before it ships."
-            : "We've opened WhatsApp with your order ready to send. Once we receive it, we'll confirm availability, show you the piece on video, and send a secure UPI/payment link."}</p>
-          <a class="btn btn-maroon" href="${link}" target="_blank" rel="noopener">Open WhatsApp again</a>
+          <p class="kicker">${copy[0]}</p>
+          <h2>${copy[1]}</h2>
+          <p class="co-id">Order <strong>${esc(id)}</strong></p>
+          <p>${copy[2]}</p>
+          <a class="btn btn-maroon" href="${link}" target="_blank" rel="noopener">${copy[3]}</a>
+          ${user ? `<a class="co-back" href="account.html">See your orders</a>` : ""}
           <a class="co-back" href="index.html">Back to Babu Banarasi</a>
         </div>`;
       scrollTo({ top: 0, behavior: "smooth" });
@@ -526,43 +564,77 @@ const SHOP = {
       if (!ok) { form.querySelector(".invalid")?.focus(); toast("Please check the highlighted details."); return; }
       const f = Object.fromEntries(new FormData(form));
       f.gift = form.elements.gift.checked;
-      const { pay, notes, gift, ...keep } = f;
+      const { pay, notes, gift, saveaddr, ...keep } = f;
       store.set("bb-customer", keep);
-      const t = totals(), id = orderId();
+      const t = totals();
+      const btn = $("#place");
+      const payload = {
+        items: cart.map((c) => ({ id: c.id, qty: c.qty })),
+        customer: { name: f.name, phone: f.phone, email: f.email || "", address1: f.address1, address2: f.address2 || "", city: f.city, state: f.state || f.region || "", pincode: f.pincode, country: f.country },
+        gift: f.gift,
+        notes: f.notes || "",
+      };
 
-      if (f.pay === "online" && SHOP.RAZORPAY_KEY) {
-        const btn = $("#place");
+      if (user && saveaddr) {
+        AUTH.saveProfile({
+          full_name: f.name, phone: f.phone, ...(user.email ? {} : { email: f.email || null }),
+          address: { address1: f.address1, address2: f.address2 || "", city: f.city, state: f.state || "", pincode: f.pincode, country: f.country },
+        }).catch(() => {});
+      }
+
+      /* ----- Pay online: server creates the order, Razorpay takes payment, server verifies ----- */
+      if (f.pay === "online" && !onlineBlock()) {
         btn.disabled = true; btn.textContent = "Opening secure payment…";
         try {
+          const o = await AUTH.callFunction("create-order", { ...payload, method: "razorpay" });
           await loadRazorpay();
           const rzp = new Razorpay({
-            key: SHOP.RAZORPAY_KEY,
-            amount: t.total * 100,
-            currency: "INR",
+            key: o.keyId || CFG.RAZORPAY_KEY_ID,
+            order_id: o.razorpayOrderId,
+            amount: o.amount,
+            currency: o.currency || "INR",
             name: "Babu Banarasi",
-            description: `Order ${id}`,
+            description: `Order ${o.orderId}`,
             image: "https://babubanarasi.com/brand/app-icon-512.png",
             prefill: { name: f.name, email: f.email || "", contact: f.phone },
-            notes: { order: id, address: [f.address1, f.address2, f.city, f.state, f.pincode].filter(Boolean).join(", ") },
+            notes: { order: o.orderId },
             theme: { color: "#4a1020" },
-            handler: (resp) => {
-              const link = wa(message(id, f, t, `Paid online. Razorpay payment ID: ${resp.razorpay_payment_id}`));
-              window.open(link, "_blank", "noopener");
-              confirmScreen(id, link, true);
+            handler: async (resp) => {
+              btn.textContent = "Confirming your payment…";
+              const link = wa(`Namaste Babu Banarasi! I've just paid online for order ${o.orderId} (Razorpay payment ${resp.razorpay_payment_id}).`);
+              try {
+                await AUTH.callFunction("verify-payment", { orderId: o.orderId, ...resp });
+                confirmScreen(o.orderId, link, "paid");
+              } catch (err) {
+                confirmScreen(o.orderId, link, "check");
+              }
             },
-            modal: { ondismiss: () => { btn.disabled = false; syncButton(); } },
+            modal: { ondismiss: () => { btn.disabled = false; syncButton(); toast("Payment cancelled. Your bag is saved."); } },
           });
           rzp.on("payment.failed", (r) => { toast(`Payment didn't go through: ${r.error.description}`); btn.disabled = false; syncButton(); });
           rzp.open();
         } catch (err) {
-          toast("Couldn't open online payment. Please order on WhatsApp instead.");
+          toast(err.message || "Couldn't start online payment. Please order on WhatsApp instead.");
           btn.disabled = false; syncButton();
         }
         return;
       }
+
+      /* ----- Order on WhatsApp (recorded in your orders when accounts are on) ----- */
+      let id = localOrderId();
+      if (backendReady()) {
+        const win = window.open("about:blank", "_blank"); // keep the popup allowed while we save the order
+        btn.disabled = true; btn.textContent = "Placing your order…";
+        try { const o = await AUTH.callFunction("create-order", { ...payload, method: "whatsapp" }); id = o.orderId || id; } catch (err) { /* still send it on WhatsApp */ }
+        const link = wa(message(id, f, t, "Payment: please send me a UPI/payment link."));
+        if (win) win.location.href = link; else window.open(link, "_blank", "noopener");
+        btn.disabled = false;
+        confirmScreen(id, link, "whatsapp");
+        return;
+      }
       const link = wa(message(id, f, t, "Payment: please send me a UPI/payment link."));
       window.open(link, "_blank", "noopener");
-      confirmScreen(id, link, false);
+      confirmScreen(id, link, "whatsapp");
     });
   }
 

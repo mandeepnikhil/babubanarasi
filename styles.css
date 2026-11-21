@@ -804,3 +804,9 @@ html.lb-lock { overflow: hidden; }
 .journal-guides li a::after { content: " →"; color: var(--gold); }
 .journal-guides li a:hover { color: var(--gold); }
 @media (max-width: 860px) { .journal-guides ul { grid-template-columns: 1fr; } .weave-list .guide-link { margin-left: 0; display: table; } }
+
+/* Account link in the top bar */
+.topbar-account { display: inline-flex; align-items: center; gap: 6px; color: var(--gold-light) !important; border: 0 !important; padding: 3px 8px; font-size: .7rem; letter-spacing: .12em; }
+.topbar-account svg { width: 15px; height: 15px; }
+.topbar-account:hover { color: #fff !important; }
+@media (max-width: 560px) { .topbar-account .account-label { display: none; } }
