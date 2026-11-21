@@ -26,7 +26,7 @@ const SHOP = {
   const page = document.body.dataset.page;
   const CFG = window.BB_CONFIG || {};
   const AUTH = window.BB_AUTH || null;
-  const backendReady = () => !!(CFG.SUPABASE_URL && CFG.SUPABASE_ANON_KEY && AUTH && AUTH.state.configured);
+  const backendReady = () => !!(AUTH && AUTH.state.configured);
   const onlineReady = () => backendReady() && !!CFG.RAZORPAY_KEY_ID;
   let PRODUCTS = [];
   const byId = (id) => PRODUCTS.find((p) => p.id === id);

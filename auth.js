@@ -5,7 +5,8 @@
    =========================================================== */
 (function () {
   const cfg = window.BB_CONFIG || {};
-  const configured = !!(cfg.SUPABASE_URL && cfg.SUPABASE_ANON_KEY);
+  const isLocal = ["localhost", "127.0.0.1"].includes(location.hostname);
+  const configured = !!(cfg.SUPABASE_URL && cfg.SUPABASE_ANON_KEY && (cfg.LIVE || isLocal));
   const SUPABASE_CDN = "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js";
 
   const loadScript = (src) => new Promise((res, rej) => {

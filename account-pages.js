@@ -56,7 +56,7 @@
     const startMode = new URLSearchParams(location.search).get("mode") === "signup" ? "signup" : "signin";
 
     const tabs = [
-      methods.emailCode && ["code", "Email code"],
+      methods.emailCode && ["code", "Email link"],
       methods.phone && ["phone", "Mobile OTP"],
       methods.password && ["password", "Password"],
     ].filter(Boolean);
@@ -77,8 +77,8 @@
 
         <form class="auth-form" data-form="code" novalidate>
           <div class="step-1"><label>Email<input type="email" name="email" autocomplete="email" required /></label>
-            <button class="btn btn-maroon btn-full" type="submit">Email me a code</button></div>
-          <div class="step-2" hidden><p class="auth-note">We've sent a 6-digit code to <strong class="sent-to"></strong>.</p>
+            <button class="btn btn-maroon btn-full" type="submit">Email me a sign-in link</button></div>
+          <div class="step-2" hidden><p class="auth-note">Check your inbox at <strong class="sent-to"></strong>. Tap the sign-in link in the email, or type the 6-digit code here if the email shows one.</p>
             <label>Code<input name="token" inputmode="numeric" autocomplete="one-time-code" maxlength="6" pattern="[0-9]*" /></label>
             <button class="btn btn-maroon btn-full verify" type="button">Verify and continue</button>
             <button class="auth-link resend" type="button">Send a new code</button></div>
@@ -161,14 +161,14 @@
         const { error } = kind === "email"
           ? await sb.auth.signInWithOtp({ email: target, options: { shouldCreateUser: true, emailRedirectTo: redirectTo } })
           : await sb.auth.signInWithOtp({ phone: target, options: { shouldCreateUser: true } });
-        busy(btn, false, kind === "email" ? "Email me a code" : "Send OTP");
+        busy(btn, false, kind === "email" ? "Email me a sign-in link" : "Send OTP");
         if (error) return say(msg, friendly(error));
         cooldown = Date.now() + 30000;
         $(".sent-to", form).textContent = target;
         $(".step-1", form).hidden = true;
         $(".step-2", form).hidden = false;
         form.elements.token.focus();
-        say(msg, "Code sent. It can take a minute to arrive.", true);
+        say(msg, kind === "email" ? "Sent. It can take a minute to arrive; check your spam folder too." : "Code sent. It can take a minute to arrive.", true);
       };
       const verify = async () => {
         const token = form.elements.token.value.trim();

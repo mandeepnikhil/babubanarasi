@@ -810,3 +810,13 @@ html.lb-lock { overflow: hidden; }
 .topbar-account svg { width: 15px; height: 15px; }
 .topbar-account:hover { color: #fff !important; }
 @media (max-width: 560px) { .topbar-account .account-label { display: none; } }
+
+/* Keep menus on one line at mid widths */
+.nav a { white-space: nowrap; }
+@media (max-width: 1180px) and (min-width: 861px) {
+  .nav { gap: 18px; font-size: .68rem; letter-spacing: .14em; }
+  .shop-header .nav-left a:nth-child(3) { display: none; }
+  .brand-en { font-size: 1.6rem; }
+}
+.topbar-account { white-space: nowrap; }
+@media (max-width: 1180px) { .topbar-lead { display: none; } }
