@@ -79,9 +79,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&family=Tiro+Devanagari+Hindi&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=16" />
+  <link rel="stylesheet" href="styles.css?v=17" />
+  <link rel="stylesheet" href="shop.css?v=9" />
 </head>
-<body>
+<body data-page="home">
 
   <!-- ============ TOP BAR: Banaras right now · language · sound ============ -->
   <div class="topbar">
@@ -118,7 +119,12 @@
         <a href="#stays" data-hi="ठहराव">Stays</a>
         <a href="#festivals" data-hi="त्योहार">Festivals</a>
         <a href="#contact" class="nav-cta" data-hi="संपर्क">Enquire</a>
+        <a href="#" class="bag-btn nav-bag" aria-label="Open your bag">Bag <span class="bag-count" hidden>0</span></a>
       </nav>
+      <a href="#" class="bag-btn bag-mobile" aria-label="Open your bag">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1 12H6zM9 8V6a3 3 0 0 1 6 0v2" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+        <span class="bag-count" hidden>0</span>
+      </a>
       <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
         <span></span><span></span>
       </button>
@@ -148,13 +154,31 @@
         <p class="hero-shloka"><span lang="sa">अतिथि देवो भव</span><em>The guest is god · Taittiriya Upanishad</em></p>
         <h1 data-hi="पूरा बनारस,<br/><em>पूरी दुनिया के लिए।</em>">The whole of Banaras,<br/><em>for the whole world.</em></h1>
         <span class="rule" aria-hidden="true"></span>
-        <p class="hero-sub" data-hi="हथकरघा रेशम · घाट किनारे ठहराव · अनुभव · हमारी मिट्टी की रसोई">Handloom silks · Ghat-side stays · Experiences · A pantry from our soil</p>
+        <p class="hero-sub" data-hi="करघे से सीधे हथकरघा बनारसी साड़ियाँ · घाट किनारे ठहराव · अनुभव">Handloom Banarasi sarees, straight from the loom · Stays · Experiences</p>
         <div class="hero-ctas">
-          <a href="#weaves" class="btn btn-gold" data-hi="बनारसी देखें">Discover the Weaves</a>
-          <a href="#day" class="btn btn-line-light" data-hi="अपना बनारस प्लान करें">Plan your Banaras</a>
+          <a href="shop.html" class="btn btn-gold" data-hi="साड़ियाँ देखें">Shop the sarees</a>
+          <a href="#day" class="hero-link" data-hi="अपना बनारस प्लान करें">Plan your Banaras</a>
         </div>
       </div>
       <a href="#letter" class="scroll-cue" aria-label="Scroll down"><span></span></a>
+    </section>
+
+    <section class="home-shop" id="from-the-loom" aria-labelledby="hs-title">
+      <div class="wrap">
+        <div class="hs-head">
+          <div>
+            <p class="kicker" data-hi="करघे से">From the loom</p>
+            <h2 id="hs-title" data-hi="इस हफ़्ते की <em>साड़ियाँ</em>">This week's <em>sarees</em></h2>
+          </div>
+          <a class="hs-all" href="shop.html" data-hi="सभी साड़ियाँ देखें →">See all sarees →</a>
+        </div>
+        <div class="hs-grid" id="home-shop-grid" aria-live="polite"></div>
+        <ul class="hs-assure">
+          <li>Woven by hand in Varanasi</li>
+          <li>See it on a live video call before it ships</li>
+          <li>Free insured shipping in India</li>
+        </ul>
+      </div>
     </section>
 
     <!-- ============ LETTER ============ -->
@@ -976,6 +1000,7 @@
 
   <script src="config.js?v=7"></script>
   <script src="auth.js?v=3"></script>
+  <script src="shop.js?v=7"></script>
   <script src="script.js?v=9"></script>
   <script src="interactions.js?v=4"></script>
 </body>

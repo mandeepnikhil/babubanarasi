@@ -18,7 +18,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&family=Tiro+Devanagari+Hindi&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css?v=16" />
-  <link rel="stylesheet" href="shop.css?v=6" />
+  <link rel="stylesheet" href="shop.css?v=9" />
 </head>
 <body data-page="checkout">
   <div class="sample-banner" hidden>Sample catalogue: these products, photos and prices are placeholders, not for sale yet.</div>
@@ -99,6 +99,11 @@
             <p class="intl-note" id="intl-note" hidden>For orders outside India we'll quote shipping on WhatsApp first, so these are placed on WhatsApp.</p>
           </fieldset>
           <button type="submit" class="btn btn-maroon btn-full co-place" id="place">Place order on WhatsApp</button>
+          <ul class="co-trust" aria-label="Why it's safe to order">
+            <li>Shown to you on a live video call before it ships</li>
+            <li>Free insured shipping in India</li>
+            <li>Damaged or not as shown? Replacement or refund</li>
+          </ul>
           <p class="co-fine">By placing your order you agree to our <a href="policies.html#terms">terms</a> and <a href="policies.html#returns">returns policy</a>. Your details are only used to deliver your order; see our <a href="policies.html#privacy">privacy policy</a>.</p>
         </form>
         <aside class="co-summary" id="summary" aria-label="Order summary"></aside>
@@ -121,7 +126,7 @@
   </a>
   <script src="config.js?v=7"></script>
   <script src="auth.js?v=3"></script>
-  <script src="shop.js?v=4"></script>
+  <script src="shop.js?v=7"></script>
   <script>window.SITE = { WHATSAPP_NUMBER: SHOP.WHATSAPP_NUMBER };</script>
   <script src="interactions.js?v=4"></script>
 </body>

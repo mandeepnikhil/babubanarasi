@@ -411,3 +411,36 @@ html.bag-lock { overflow: hidden; }
 .pc-media::before { content: ""; position: absolute; top: 6px; right: 6px; transform: rotate(90deg); width: 34px; height: 34px; background: var(--konia) no-repeat; z-index: 3; pointer-events: none; opacity: .9; }
 .pc-media::after { content: ""; position: absolute; bottom: 6px; left: 6px; width: 34px; height: 34px; background: var(--konia) no-repeat; transform: rotate(270deg); z-index: 3; pointer-events: none; opacity: .9; }
 .auth-ms { margin-top: 10px; }
+
+/* Product: reassurance under the buttons */
+.pd-assure { list-style: none; padding: 0; margin: 16px 0 0; display: grid; gap: 6px; font-size: .84rem; color: var(--muted); }
+.pd-assure li { display: flex; gap: 10px; align-items: baseline; }
+.pd-assure li::before { content: ""; flex: none; width: 5px; height: 5px; transform: rotate(45deg) translateY(-2px); background: var(--gold); }
+
+/* Product: sticky buy bar (phones only) */
+.pd-sticky { display: none; }
+@media (max-width: 760px) {
+  .pd-main { aspect-ratio: 4/4.3; }
+  .pd-sticky { display: flex; position: fixed; left: 0; right: 0; bottom: 0; z-index: 55; align-items: center; gap: 14px; padding: 10px 16px calc(10px + env(safe-area-inset-bottom)); background: var(--ivory); border-top: 1px solid var(--hair); box-shadow: 0 -8px 24px -12px rgba(74,16,32,.25); transform: translateY(110%); transition: transform .35s var(--ease); }
+  .pd-sticky.on { transform: none; }
+  .ps-info { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+  .ps-name { font-size: .78rem; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .ps-price { font-family: var(--serif); font-size: 1.3rem; font-weight: 500; color: var(--ink); }
+  .ps-add { flex: none; padding-inline: 22px; }
+  body.pd-sticky-on .wa-float { bottom: 86px; }
+}
+@media (prefers-reduced-motion: reduce) { .pd-sticky { transition: none; } }
+
+/* Checkout: reassurance right where people hesitate */
+.co-trust { list-style: none; padding: 0; margin: 14px 0 6px; display: grid; gap: 6px; font-size: .84rem; color: var(--muted); }
+.co-trust li { display: flex; gap: 10px; align-items: baseline; }
+.co-trust li::before { content: ""; flex: none; width: 5px; height: 5px; transform: rotate(45deg) translateY(-2px); background: var(--gold); }
+
+/* Checkout (phones): the summary folds into one line */
+.sum-toggle { display: flex; justify-content: space-between; align-items: center; gap: 12px; cursor: pointer; list-style: none; font-size: .95rem; color: var(--burgundy); }
+.sum-toggle::-webkit-details-marker { display: none; }
+.sum-toggle span::after { content: "▾"; margin-left: 8px; font-size: .8em; color: var(--gold); display: inline-block; transition: transform .25s; }
+.sum-fold[open] .sum-toggle span::after { transform: rotate(180deg); }
+.sum-toggle strong { font-family: var(--serif); font-size: 1.25rem; font-weight: 500; color: var(--ink); }
+.sum-fold[open] .sum-toggle { margin-bottom: 18px; }
+@media (max-width: 860px) { .co-summary:has(.sum-fold) { padding: 16px 18px; } }

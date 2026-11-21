@@ -48,6 +48,11 @@ h2 em, h1 em { font-style: italic; color: var(--gold); }
   border: 1px solid transparent; cursor: pointer; transition: all .35s var(--ease);
 }
 .btn-gold { background: var(--gold); color: #fff; border-color: var(--gold); }
+/* Hero: one clear, high-contrast action, and a quiet text link */
+.hero .btn-gold { background: var(--gold-light); color: var(--burgundy); border-color: var(--gold-light); font-weight: 500; }
+.hero .btn-gold:hover { background: #fff; color: var(--burgundy); border-color: #fff; }
+.hero-link { align-self: center; color: #fff; font-size: .78rem; letter-spacing: .22em; text-transform: uppercase; border-bottom: 1px solid rgba(255,255,255,.55); padding: 6px 0; text-shadow: 0 1px 12px rgba(0,0,0,.5); }
+.hero-link:hover { color: var(--gold-light); border-color: var(--gold-light); }
 .btn-gold:hover { background: transparent; color: var(--gold-light); border-color: var(--gold-light); }
 .btn-line-light { color: #fff; border-color: rgba(255,255,255,.6); }
 .btn-line-light:hover { background: #fff; color: var(--burgundy); }
@@ -655,7 +660,8 @@ html[lang="hi"] .btn[data-hi] { font-size: .92rem; }
 .hero-content > :nth-child(3) { animation-delay: .75s; }
 .hero-content > :nth-child(4) { animation-delay: .9s; }
 .hero-content > :nth-child(5) { animation-delay: 1.05s; }
-@keyframes rise { from { opacity: 0; transform: translateY(30px); } }
+/* Slide only, never fade from invisible: if a browser pauses animations, the hero must still read */
+@keyframes rise { from { transform: translateY(24px); } }
 
 /* Headings unveil like a cloth being lifted */
 .sec-head.reveal h2, .reveal > h2 { clip-path: inset(-10% -10% 100% -10%); transition: clip-path 1.3s .15s var(--ease); }
@@ -930,3 +936,24 @@ body::after { content: ""; position: fixed; inset: 0; pointer-events: none; z-in
   .hero-arch { width: 88vw; top: 10%; height: 80%; opacity: .4; }
 }
 .woven .woven-video { grid-column: 1 / -1; width: 100%; margin: 40px auto 0; }
+
+/* ---------- Homepage: "From the loom" product strip ---------- */
+.home-shop { padding: 84px 0 70px; background: var(--ivory); }
+.hs-head { display: flex; align-items: end; justify-content: space-between; gap: 20px; margin-bottom: 34px; }
+.hs-head h2 { margin-top: 10px; }
+.hs-all { color: var(--burgundy); font-size: .78rem; letter-spacing: .2em; text-transform: uppercase; border-bottom: 1px solid var(--gold); padding-bottom: 4px; white-space: nowrap; }
+.hs-all:hover { color: var(--gold); }
+.hs-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; min-height: 200px; }
+.hs-grid .pc { margin: 0; }
+.hs-assure { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 34px; margin-top: 40px; padding: 0; color: var(--muted); font-size: .9rem; }
+.hs-assure li::before { content: ""; display: inline-block; width: 6px; height: 6px; margin-right: 10px; transform: rotate(45deg) translateY(-2px); background: var(--gold); }
+@media (max-width: 900px) {
+  .hs-grid { grid-template-columns: repeat(4, 72%); overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: 16px; gap: 16px; padding-bottom: 8px; margin-inline: -16px; padding-inline: 16px; scrollbar-width: none; }
+  .hs-grid::-webkit-scrollbar { display: none; }
+  .hs-grid .pc { scroll-snap-align: start; }
+}
+@media (max-width: 560px) {
+  .home-shop { padding: 56px 0 48px; }
+  .hs-head { flex-direction: column; align-items: start; gap: 12px; margin-bottom: 24px; }
+  .hs-assure { flex-direction: column; align-items: start; gap: 8px; margin-top: 28px; }
+}

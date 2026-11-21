@@ -146,7 +146,7 @@ const SHOP = {
   }
 
   /* ---------- Shared header bits ---------- */
-  const header = $(".site-header"), toggle = $(".nav-toggle");
+  const header = $(".site-header"), toggle = page === "home" ? null : $(".nav-toggle"); // the homepage menu is run by script.js
   toggle?.addEventListener("click", () => {
     const open = !header.classList.contains("menu-open");
     header.classList.toggle("menu-open", open);
@@ -185,6 +185,16 @@ const SHOP = {
     if (b) { e.preventDefault(); addToCart(b.dataset.add, 1); }
   });
   const wireWa = (root) => $$("[data-wa]", root).forEach((el) => { el.href = wa(el.dataset.wa); el.target = "_blank"; el.rel = "noopener"; });
+
+  /* ---------- Homepage strip: a few pieces you can buy, near the top ---------- */
+  function initHome() {
+    const grid = $("#home-shop-grid");
+    if (!grid) return;
+    const pick = PRODUCTS.filter(canBuy).slice(0, 4);
+    if (!pick.length) { grid.closest(".home-shop").hidden = true; return; }
+    grid.innerHTML = pick.map(card).join("");
+    wireWa(grid);
+  }
 
   /* ---------- Shop page ---------- */
   function initShop() {
@@ -326,6 +336,12 @@ const SHOP = {
             <button type="button" class="btn btn-gold" id="pd-now">Buy now</button>
           </div>` : `
           <div class="pd-buy"><a class="btn btn-maroon" data-wa="Namaste! The ${esc(p.name)} is sold out. Is anything similar on the loom?" href="#">Ask for one like it</a></div>`}
+        ${canBuy(p) ? `<ul class="pd-assure">
+          <li>Shown to you on video before it ships</li>
+          <li>${SHOP.SHIPPING_INDIA === 0 ? "Free insured shipping in India" : "Insured, tracked shipping"}</li>
+          <li>${onlineReady() ? "Secure payment by Razorpay · UPI, cards, netbanking" : "Pay by UPI link after we confirm"}</li>
+          <li>Damaged or not as shown? Replacement or refund</li>
+        </ul>` : ""}
         <a class="pd-video" data-wa="Namaste! Could I see the ${esc(p.name)} on a live video call?" href="#">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h12v10H3zM15 10l6-3v10l-6-3" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
           See it on a live video call first
@@ -363,6 +379,23 @@ const SHOP = {
     $(".pd-qty .q-plus")?.addEventListener("click", () => { q = Math.min(maxQty(p), q + 1); qEl.textContent = q; });
     $("#pd-add")?.addEventListener("click", () => addToCart(p.id, q));
     $("#pd-now")?.addEventListener("click", () => { addToCart(p.id, q, false); location.href = "checkout.html"; });
+
+    // Phone: keep the price and the main action in reach whenever the buttons are off-screen
+    const buy = $(".pd-buy");
+    if (buy && canBuy(p) && "IntersectionObserver" in window) {
+      const bar = document.createElement("div");
+      bar.className = "pd-sticky";
+      bar.setAttribute("aria-hidden", "true");
+      bar.innerHTML = `<div class="ps-info"><span class="ps-name">${esc(p.name)}</span><strong class="ps-price">${inr(p.price)}</strong></div>
+        <button type="button" class="btn btn-maroon ps-add" tabindex="-1">${p.stock === 0 ? "Order to make" : "Add to bag"}</button>`;
+      document.body.appendChild(bar);
+      $(".ps-add", bar).addEventListener("click", () => addToCart(p.id, q));
+      new IntersectionObserver(([en]) => {
+        const show = !en.isIntersecting;
+        bar.classList.toggle("on", show);
+        document.body.classList.toggle("pd-sticky-on", show);
+      }).observe(buy);
+    }
 
     // Related pieces
     const rel = PRODUCTS.filter((x) => x.id !== p.id).map((x) => ({ x, s: (x.fabric === p.fabric) + x.occasions.filter((o) => p.occasions.includes(o)).length }))
@@ -417,6 +450,17 @@ const SHOP = {
       online.closest(".pay-opt").classList.toggle("is-off", !!b);
       $("#pay-online-note").textContent = b ? BLOCK_MSG[b] : "UPI, cards and netbanking via Razorpay. Your payment is verified before we confirm.";
       if (b && online.checked) $("#pay-wa").checked = true;
+      if (!b) preferOnline();
+    };
+    // When paying online is possible, list it first and choose it; WhatsApp stays as the "talk first" option
+    let payTouched = false;
+    $$('input[name="pay"]').forEach((r) => r.addEventListener("change", () => { payTouched = true; }));
+    const preferOnline = () => {
+      if (onlineBlock()) return;
+      const onl = online.closest(".pay-opt"), waOpt = $("#pay-wa").closest(".pay-opt");
+      if (onl.nextElementSibling !== waOpt) waOpt.before(onl);
+      $("strong", waOpt).textContent = "Prefer to talk first? Order on WhatsApp";
+      if (!payTouched) online.checked = true;
     };
     online.closest(".pay-opt").addEventListener("click", () => {
       if (!online.disabled) return;
@@ -437,8 +481,12 @@ const SHOP = {
         return false;
       }
       const t = totals();
-      summary.innerHTML = `
-        <h2>Order summary</h2>
+      const narrow = matchMedia("(max-width: 860px)").matches;
+      const wasOpen = !!summary.querySelector("details[open]");
+      const head = narrow
+        ? `<details class="sum-fold" ${wasOpen ? "open" : ""}><summary class="sum-toggle"><span>Order summary · ${count()} ${count() === 1 ? "item" : "items"}</span><strong>${inr(t.total)}</strong></summary>`
+        : `<h2>Order summary</h2>`;
+      summary.innerHTML = head + `
         <ul class="sum-lines">${items.map(({ p, qty }) => `
           <li><span class="sum-img"><img src="${p.images[0]}" alt="" /><b>${qty}</b></span>
             <span class="sum-name">${esc(p.name)}<small>${esc(p.fabric)}${p.stock === 0 && p.madeToOrder ? " · made to order" : ""}${p.sample ? " · sample" : ""}</small></span>
@@ -450,7 +498,7 @@ const SHOP = {
           ${form.elements.gift.checked ? `<div><dt>Gift wrap</dt><dd>${t.gift ? inr(t.gift) : "Free"}</dd></div>` : ""}
           <div class="sum-total"><dt>Total</dt><dd>${inr(t.total)}${t.ship === null ? "<small>+ shipping</small>" : ""}</dd></div>
         </dl>
-        <p class="sum-note">Every piece is shown to you on video before it ships.</p>`;
+        <p class="sum-note">Every piece is shown to you on video before it ships.</p>` + (narrow ? `</details>` : "");
       return true;
     };
     const syncCountry = () => {
@@ -646,6 +694,7 @@ const SHOP = {
       cart = cart.filter((c) => byId(c.id));
       renderBag();
       if (PRODUCTS.some((p) => p.sample)) $$(".sample-banner").forEach((b) => (b.hidden = false));
+      if (page === "home") initHome();
       if (page === "shop") initShop();
       if (page === "product") initProduct();
       if (page === "checkout") initCheckout();
