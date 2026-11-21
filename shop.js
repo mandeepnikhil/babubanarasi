@@ -529,7 +529,7 @@ const SHOP = {
             currency: "INR",
             name: "Babu Banarasi",
             description: `Order ${id}`,
-            image: "https://babubanarasi.com/favicon.svg",
+            image: "https://babubanarasi.com/brand/app-icon-512.png",
             prefill: { name: f.name, email: f.email || "", contact: f.phone },
             notes: { order: id, address: [f.address1, f.address2, f.city, f.state, f.pincode].filter(Boolean).join(", ") },
             theme: { color: "#4a1020" },
