@@ -367,4 +367,28 @@
       hint.classList.add("used");
     });
   }
+
+  /* ---------- 14. Whole cards act on their own call to action ---------- */
+  $$(".fest, .motif, .craft-grid li, .pantry-products li, .stay").forEach((c) => {
+    const cta = c.querySelector(".card-cta, .fest-link");
+    if (!cta) return;
+    c.classList.add("is-clickable");
+    if (!c.dataset.cursor && !c.closest("[data-cursor]")) c.dataset.cursor = c.matches(".pantry-products li") ? "Notify me" : c.matches(".motif") ? "See sarees" : "Enquire";
+    c.addEventListener("click", (e) => {
+      if (e.target.closest("a, button, img[role=button]")) return; // real links and photos keep their own action
+      if (c.closest(".dragging")) return;
+      cta.click();
+    });
+  });
+
+  /* ---------- 15. Your bag is reachable from every page ---------- */
+  try {
+    const cart = JSON.parse(localStorage.getItem("bb-cart") || "[]");
+    const n = cart.reduce((sum, c) => sum + (c.qty || 0), 0);
+    if (n > 0 && !$(".bag-btn")) {
+      const make = (cls) => { const a = document.createElement("a"); a.href = "checkout.html"; a.className = cls; a.textContent = `Bag (${n})`; return a; };
+      $(".nav-right")?.insertBefore(make("nav-bag-link"), $(".nav-right .nav-cta"));
+      $(".mobile-nav")?.prepend(make("nav-bag-link"));
+    }
+  } catch (e) {}
 })();

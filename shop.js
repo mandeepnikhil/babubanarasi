@@ -265,6 +265,11 @@ const SHOP = {
     const root = $("#product");
     if (!p) {
       root.innerHTML = `<div class="no-results"><p>We couldn't find that saree. It may have found a home already.</p><a class="btn btn-maroon" href="shop.html">See all sarees</a></div>`;
+      $("#crumb-name").textContent = "Not found";
+      const picks = PRODUCTS.filter(canBuy).slice(0, 4);
+      $(".related h2").textContent = "Pieces available now";
+      $("#related-grid").innerHTML = picks.map(card).join("");
+      wireWa($("#related-grid"));
       return;
     }
     const a = availability(p);
@@ -326,7 +331,7 @@ const SHOP = {
           <details open><summary>The story</summary><p>${esc(p.description)}</p></details>
           <details><summary>Details</summary><dl class="pd-dl">${p.details.map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join("")}</dl></details>
           <details><summary>Care</summary><p>Dry-clean only. Wrap it in soft muslin, never plastic, and refold it along new lines every few months so the zari doesn't crack. Keep it away from perfume and direct sun.</p></details>
-          <details><summary>Shipping &amp; returns</summary><p>${esc(SHOP.POLICY.shipping)}</p><p>${esc(SHOP.POLICY.returns)}</p></details>
+          <details><summary>Shipping &amp; returns</summary><p>${esc(SHOP.POLICY.shipping)}</p><p>${esc(SHOP.POLICY.returns)}</p><p><a class="pd-policy" href="policies.html#shipping">Read our full shipping, returns and payment policies →</a></p></details>
         </div>
       </div>`;
     wireWa(root);
@@ -377,6 +382,13 @@ const SHOP = {
       online.closest(".pay-opt").classList.add("is-off");
       $("#pay-online-note").textContent = "Coming soon. For now, order on WhatsApp and we'll send you a secure UPI/payment link.";
     }
+    online.closest(".pay-opt").addEventListener("click", () => {
+      if (!online.disabled) return;
+      toast(!SHOP.RAZORPAY_KEY
+        ? "Online payment is coming soon. Order on WhatsApp and we'll send a secure payment link."
+        : "For orders outside India, we confirm shipping on WhatsApp first.");
+      $("#pay-wa").focus();
+    });
 
     const isIndia = () => form.elements.country.value === "India";
     const totals = () => {

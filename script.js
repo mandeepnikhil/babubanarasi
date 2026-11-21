@@ -39,7 +39,11 @@ const SITE = {
     const lines = [`Namaste Babu Banarasi! I'm ${name}.`, `Interested in: ${form.elements.interest.value}`];
     const msg = form.elements.message.value.trim();
     if (msg) lines.push(`Details: ${msg}`);
-    window.open(waLink(lines.join("\n")), "_blank", "noopener");
+    const link = waLink(lines.join("\n"));
+    window.open(link, "_blank", "noopener");
+    let note = form.querySelector(".form-sent");
+    if (!note) { note = document.createElement("p"); note.className = "form-sent"; note.setAttribute("role", "status"); form.appendChild(note); }
+    note.innerHTML = `WhatsApp has opened with your note. Press send there and we'll reply soon. <a href="${link}" target="_blank" rel="noopener">Didn't open? Tap here.</a>`;
   });
 
   // Reveal on scroll

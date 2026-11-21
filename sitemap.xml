@@ -9,6 +9,7 @@
     <image:image><image:loc>https://babubanarasi.com/images/saree-red.jpg</image:loc></image:image>
     <image:image><image:loc>https://babubanarasi.com/images/loom-weaver.jpg</image:loc></image:image>
   </url>
+  <url><loc>https://babubanarasi.com/policies.html</loc><lastmod>2026-11-21</lastmod><changefreq>monthly</changefreq><priority>0.4</priority></url>
   <!-- SHOP: add these when the shop goes live
   <url><loc>https://babubanarasi.com/shop.html</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
   -->

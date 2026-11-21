@@ -243,3 +243,25 @@ html.bag-lock { overflow: hidden; }
   .shop-assure ul { grid-template-columns: 1fr; }
   .bag-head, .bag-body, .bag-foot { padding-left: 20px; padding-right: 20px; }
 }
+
+.pd-policy { color: var(--burgundy); text-decoration: underline; }
+.co-fine a { color: var(--burgundy); text-decoration: underline; }
+
+/* Policies */
+.pol-wrap { max-width: 860px; padding-bottom: 110px; }
+.pol-head { padding: 30px 0 30px; border-bottom: 1px solid var(--hair); margin-bottom: 20px; }
+.pol-head h1 { font-size: clamp(2.2rem, 4.6vw, 3.6rem); color: var(--burgundy); font-weight: 400; margin-top: 10px; }
+.pol-head h1 em { color: var(--gold); }
+.pol-updated { color: var(--muted); font-size: .85rem; margin-top: 14px; }
+.pol-toc { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 26px; }
+.pol-toc a { font-size: .74rem; letter-spacing: .14em; text-transform: uppercase; padding: 8px 14px; border: 1px solid var(--hair); color: var(--burgundy); transition: all .3s var(--ease); }
+.pol-toc a:hover { background: var(--burgundy); color: var(--ivory); border-color: var(--burgundy); }
+.pol-sec { padding: 34px 0; border-bottom: 1px solid var(--hair); scroll-margin-top: 90px; }
+.pol-sec h2 { font-size: 2rem; margin-bottom: 16px; }
+.pol-sec ul { list-style: none; display: grid; gap: 12px; }
+.pol-sec li { position: relative; padding-left: 24px; color: var(--muted); }
+.pol-sec li::before { content: "✦"; position: absolute; left: 0; top: 2px; color: var(--gold); font-size: .75rem; }
+.pol-sec strong { color: var(--ink); font-weight: 500; }
+.pol-sec a:not(.btn) { color: var(--burgundy); text-decoration: underline; }
+.pol-contact p { color: var(--muted); margin-bottom: 6px; }
+.pol-contact .btn { margin-top: 18px; }
