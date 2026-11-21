@@ -26,6 +26,7 @@
     if (/password should be at least/i.test(m)) return "Your password needs at least 8 characters.";
     if (/phone.*provider|sms/i.test(m)) return "Mobile codes aren't available right now. Please use email or Google.";
     if (/provider is not enabled|unsupported provider/i.test(m)) return "This sign-in option isn't switched on yet. Please choose another.";
+    if (/exchange external code|access_denied|oauth|provider.*error/i.test(m)) return "Sign-in with that account didn't finish. Please try again, or use your email.";
     if (/failed to fetch|networkerror|load failed|network request failed/i.test(m)) return "We couldn't reach our server. Please check your connection and try again.";
     return m || "Something went wrong. Please try again.";
   };
@@ -137,6 +138,16 @@
 
     const done = () => { location.replace(next); };
 
+    // Came back from Google with an error: say so, and tidy the address bar
+    {
+      const q = new URLSearchParams(location.search + "&" + location.hash.slice(1));
+      const err = q.get("err") || q.get("error_description") || q.get("error");
+      if (err) {
+        say($('.auth-form:not([hidden]) .auth-msg') || $(".auth-msg"), friendly(err));
+        history.replaceState(null, "", "login.html" + (next !== "account.html" ? "?next=" + encodeURIComponent(next) : ""));
+      }
+    }
+
     // Google
     $("#google-btn")?.addEventListener("click", async () => {
       const { error } = await sb.auth.signInWithOAuth({ provider: "google", options: { redirectTo } });
@@ -247,7 +258,12 @@
     if (!st.configured) return notConfigured(root);
     const sb = st.client;
     const recovering = location.hash.includes("reset") || location.hash.includes("type=recovery") || st.lastEvent === "PASSWORD_RECOVERY";
-    if (!st.user) { location.replace("login.html?next=account.html"); return; }
+    if (!st.user) {
+      const q = new URLSearchParams(location.search + "&" + location.hash.slice(1));
+      const err = q.get("error_description") || q.get("error");
+      location.replace("login.html?next=account.html" + (err ? "&err=" + encodeURIComponent(err.slice(0, 200)) : ""));
+      return;
+    }
 
     const u = st.user, p = st.profile || {};
     const a = p.address || {};
