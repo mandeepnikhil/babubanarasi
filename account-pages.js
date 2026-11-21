@@ -263,7 +263,7 @@
           </section>
           <section class="acct-card">
             <h2>Your orders</h2>
-            <div id="orders"><p class="acct-empty">Loading your orders…</p></div>
+            <div id="orders"><div class="butti-loader" role="status" aria-label="Loading your orders"><i></i><i></i><i></i></div></div>
           </section>
         </div>
         <aside class="acct-side">

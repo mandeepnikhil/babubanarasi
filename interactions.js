@@ -361,6 +361,7 @@
     qb.addEventListener("click", (e) => {
       const r = qb.getBoundingClientRect();
       spawn(e.clientX - r.left, e.clientY - r.top);
+      window.BBSound?.chime();
       floated += 1;
       store.set("bb-diyas", String(floated));
       count();
@@ -391,4 +392,59 @@
       $(".mobile-nav")?.prepend(make("nav-bag-link"));
     }
   } catch (e) {}
+
+  /* ---------- 16. Heritage layer (DESIGN-BRIEF.md) ---------- */
+  // Temple-arch outline that draws itself behind the hero text
+  const heroEl = $(".hero");
+  if (heroEl && !$(".hero-arch")) {
+    const arch = document.createElement("div");
+    arch.className = "hero-arch";
+    arch.setAttribute("aria-hidden", "true");
+    arch.innerHTML = '<svg viewBox="0 0 400 560" preserveAspectRatio="none"><path d="M20 560V230C20 140 110 90 200 10C290 90 380 140 380 230V560" fill="none" stroke="currentColor" stroke-width="1.2" vector-effect="non-scaling-stroke"/></svg>';
+    heroEl.insertBefore(arch, $(".hero-content"));
+  }
+
+  // Zari thread on framed images
+  $$(".letter-img, .weave-main, .weave-duo figure, .tech-img, .stay figure, .khana-photos figure, .sarnath-img, .cook-img, .pillar-img").forEach((el) => el.classList.add("zari"));
+
+  // Bel creeper dividers between the main sections
+  const BEL = '<svg viewBox="0 0 520 28" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"><path class="vine" d="M10 14c40-14 70-14 110 0s70 14 110 0 70-14 110 0 70 14 110 0 50-10 60-6"/></g><g fill="currentColor" class="bud"><path d="M120 14c4-7 10-9 14-7-3 5-8 7-14 7z"/><path d="M230 14c-4 7-10 9-14 7 3-5 8-7 14-7z"/><path d="M340 14c4-7 10-9 14-7-3 5-8 7-14 7z"/><circle cx="260" cy="14" r="2.4"/><path d="M256 6l4 4 4-4-4-4z" opacity=".7"/></g></svg>';
+  const divAfter = ["#letter", "#day", "#weaves", "#khana", "#festivals", "#sarnath", "#voices"];
+  const dividers = [];
+  divAfter.forEach((sel) => {
+    const sec = $(sel);
+    if (!sec || (sec.nextElementSibling && sec.nextElementSibling.classList.contains("heritage-divider"))) return;
+    const d = document.createElement("div");
+    d.className = "heritage-divider";
+    d.innerHTML = BEL;
+    sec.after(d);
+    dividers.push(d);
+  });
+  if ("IntersectionObserver" in window) {
+    const vio = new IntersectionObserver((entries) => entries.forEach((en) => {
+      if (en.isIntersecting) { en.target.classList.add("drawn"); vio.unobserve(en.target); }
+    }), { threshold: 0.6 });
+    dividers.forEach((d) => vio.observe(d));
+  } else dividers.forEach((d) => d.classList.add("drawn"));
+
+  // Click-to-play YouTube: poster first, player only when asked (privacy-enhanced)
+  const PLAY = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z" fill="currentColor"/></svg>';
+  $$(".yt-frame[data-yt]").forEach((frame) => {
+    const id = frame.dataset.yt, title = frame.dataset.title || "Video";
+    frame.dataset.cursor = "Play";
+    frame.innerHTML = `<img src="https://i.ytimg.com/vi/${id}/hqdefault.jpg" alt="" loading="lazy" width="480" height="360" /><button type="button" class="yt-play" aria-label="Play video: ${title}">${PLAY}</button>`;
+    $(".yt-play", frame).addEventListener("click", () => {
+      frame.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&modestbranding=1&enablejsapi=1" title="${title}" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen loading="lazy"></iframe>`;
+      frame.classList.add("playing");
+      delete frame.dataset.cursor;
+    });
+  });
+  // Pause a playing video when it scrolls out of view
+  if ("IntersectionObserver" in window) {
+    const pio = new IntersectionObserver((entries) => entries.forEach((en) => {
+      const f = en.target.querySelector("iframe");
+      if (!en.isIntersecting && f) f.contentWindow?.postMessage(JSON.stringify({ event: "command", func: "pauseVideo", args: [] }), "*");
+    }), { threshold: 0.15 });
+    $$(".yt-frame").forEach((f) => pio.observe(f));
+  }
 })();

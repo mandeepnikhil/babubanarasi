@@ -406,3 +406,7 @@ html.bag-lock { overflow: hidden; }
   .auth-card { padding: 30px 22px 24px; }
   .acct-card { padding: 24px 20px; }
 }
+
+/* Heritage: quiet konia corners on product images only */
+.pc-media::before { content: ""; position: absolute; top: 6px; right: 6px; transform: rotate(90deg); width: 34px; height: 34px; background: var(--konia) no-repeat; z-index: 3; pointer-events: none; opacity: .9; }
+.pc-media::after { content: ""; position: absolute; bottom: 6px; left: 6px; width: 34px; height: 34px; background: var(--konia) no-repeat; transform: rotate(270deg); z-index: 3; pointer-events: none; opacity: .9; }

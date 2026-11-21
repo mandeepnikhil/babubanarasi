@@ -177,6 +177,11 @@ const SITE = {
     m.gain.linearRampToValueAtTime(0, ctx.currentTime + .8);
     setTimeout(() => { nodes.forEach((n) => { try { n.stop(); } catch (e) {} }); m.disconnect(); }, 900);
   };
+  // One soft bell for deliberate moments (e.g. floating a diya), only when sound is on
+  window.BBSound = {
+    isOn: () => soundBtn?.getAttribute("aria-pressed") === "true" && !!ctx && !!master,
+    chime: () => { if (window.BBSound.isOn()) strike(440, ctx.currentTime + 0.02, 0.7); },
+  };
   soundBtn?.addEventListener("click", () => {
     const on = soundBtn.getAttribute("aria-pressed") !== "true";
     soundBtn.setAttribute("aria-pressed", String(on));
