@@ -793,3 +793,14 @@ html.lb-lock { overflow: hidden; }
 .nav-bag-link { color: var(--burgundy) !important; font-weight: 500; }
 .form-sent { position: relative; z-index: 1; font-size: .9rem; color: var(--burgundy); background: var(--ivory-deep); border-left: 2px solid var(--gold); padding: 12px 14px; }
 .form-sent a { text-decoration: underline; }
+
+/* Links to the long-form guides */
+.guide-link { display: inline-block; margin-top: 18px; font-size: .74rem; letter-spacing: .18em; text-transform: uppercase; font-weight: 500; color: var(--burgundy); border-bottom: 1px solid var(--gold); padding-bottom: 3px; }
+.guide-link:hover { color: var(--gold); }
+.weave-list .guide-link { margin-left: 22px; }
+.journal-guides { max-width: 1060px; margin: 70px auto 0; text-align: center; }
+.journal-guides ul { list-style: none; display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 40px; text-align: left; margin-top: 10px; }
+.journal-guides li a { display: block; padding: 16px 0; border-top: 1px solid var(--hair); font-family: var(--serif); font-size: 1.35rem; color: var(--burgundy); }
+.journal-guides li a::after { content: " →"; color: var(--gold); }
+.journal-guides li a:hover { color: var(--gold); }
+@media (max-width: 860px) { .journal-guides ul { grid-template-columns: 1fr; } .weave-list .guide-link { margin-left: 0; display: table; } }
