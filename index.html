@@ -1,0 +1,892 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Babu Banarasi | Handloom Weaves, Stays &amp; Experiences from Kashi</title>
+  <meta name="description" content="Pure handloom Banarasi sarees from the weavers of Varanasi, ghat-side stays, food trails, festivals, Sarnath and a farm-to-table pantry. The whole of Banaras, for the whole world." />
+  <meta property="og:title" content="Babu Banarasi | The whole of Banaras, for the whole world" />
+  <meta property="og:description" content="Handloom weaves, ghat-side stays, food, festivals and curated experiences, straight from Kashi." />
+  <meta property="og:image" content="https://babubanarasi.com/images/hero-ganga-sunset.jpg" />
+  <meta property="og:url" content="https://babubanarasi.com/" />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#4a1020" />
+  <link rel="canonical" href="https://babubanarasi.com/" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="preload" as="image" href="images/hero-ganga-sunset.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&family=Tiro+Devanagari+Hindi&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css?v=8" />
+</head>
+<body>
+
+  <!-- ============ TOP BAR: Banaras right now · language · sound ============ -->
+  <div class="topbar">
+    <div class="topbar-inner">
+      <p class="now" title="Live from Varanasi">
+        <span class="now-dot" aria-hidden="true"></span>
+        <span class="now-label" data-hi="बनारस अभी">Banaras now</span>
+        <span id="now-time">&nbsp;</span><span id="now-weather"></span><span class="now-sun" id="now-sun"></span>
+      </p>
+      <p class="topbar-mid"><span class="topbar-lead" data-hi="हर साड़ी की लाइव वीडियो झलक · ">Live video viewing of every saree · </span><a data-wa="Namaste! I'd like a live video viewing of your sarees." href="#contact">WhatsApp <span class="js-phone">+91 92609 84531</span></a></p>
+      <div class="topbar-tools">
+        <button class="lang-toggle" type="button" aria-label="Switch language between English and Hindi"><span data-l="en">EN</span><i>/</i><span data-l="hi" lang="hi">हिं</span></button>
+        <button class="sound-toggle" type="button" aria-pressed="false" aria-label="Play temple bells" title="Temple bells (sound)">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c-3.3 0-5.5 2.6-5.5 6v4.2L4.8 16h14.4l-1.7-2.8V9c0-3.4-2.2-6-5.5-6z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M10 19a2 2 0 0 0 4 0" fill="none" stroke="currentColor" stroke-width="1.4"/><path class="sound-waves" d="M20.5 7.5c.8 1 1.2 2.2 1.2 3.5M3.5 7.5c-.8 1-1.2 2.2-1.2 3.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ HEADER ============ -->
+  <header class="site-header" id="top">
+    <div class="wrap header-inner">
+      <nav class="nav nav-left" aria-label="Primary">
+        <a href="#weaves" data-hi="बनारसी साड़ियाँ">The Weaves</a>
+        <a href="#experiences" data-hi="अनुभव">Experiences</a>
+        <a href="#stays" data-hi="ठहराव">Stays</a>
+      </nav>
+      <a href="#top" class="brand" aria-label="Babu Banarasi home">
+        <span class="brand-en">Babu Banarasi</span>
+        <span class="brand-hi" lang="hi">बाबू बनारसी</span>
+      </a>
+      <nav class="nav nav-right" aria-label="Secondary">
+        <a href="#khana" data-hi="खान-पान">Food</a>
+        <a href="#festivals" data-hi="त्योहार">Festivals</a>
+        <a href="#contact" class="nav-cta" data-hi="संपर्क">Enquire</a>
+      </nav>
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
+        <span></span><span></span>
+      </button>
+    </div>
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile">
+      <a href="#day" data-hi="काशी का एक दिन">A Day in Kashi</a>
+      <a href="#weaves" data-hi="बनारसी साड़ियाँ">The Weaves</a>
+      <a href="#khana" data-hi="बनारसी खाना">Banarasi Khana</a>
+      <a href="#experiences" data-hi="अनुभव">Experiences</a>
+      <a href="#festivals" data-hi="त्योहार">Festivals</a>
+      <a href="#sarnath" data-hi="सारनाथ">Sarnath</a>
+      <a href="#stays" data-hi="ठहराव">Stays</a>
+      <a href="#pantry" data-hi="रसोई भंडार">Pantry</a>
+      <a href="#contact" data-hi="संपर्क">Enquire</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ============ HERO ============ -->
+    <section class="hero">
+      <img class="hero-img" src="images/hero-ganga-sunset.jpg" alt="Boats on the Ganga at sunset in Varanasi" width="2400" height="1600" fetchpriority="high" />
+      <div class="hero-veil"></div>
+      <div class="hero-content">
+        <p class="kicker" data-hi="काशी की गलियों से">From the lanes of Kashi</p>
+        <h1 data-hi="पूरा बनारस,<br/><em>पूरी दुनिया के लिए।</em>">The whole of Banaras,<br/><em>for the whole world.</em></h1>
+        <span class="rule" aria-hidden="true"></span>
+        <p class="hero-sub" data-hi="हथकरघा रेशम · घाट किनारे ठहराव · अनुभव · हमारी मिट्टी की रसोई">Handloom silks · Ghat-side stays · Experiences · A pantry from our soil</p>
+        <div class="hero-ctas">
+          <a href="#weaves" class="btn btn-gold" data-hi="बनारसी देखें">Discover the Weaves</a>
+          <a href="#day" class="btn btn-line-light" data-hi="अपना बनारस प्लान करें">Plan your Banaras</a>
+        </div>
+      </div>
+      <a href="#letter" class="scroll-cue" aria-label="Scroll down"><span></span></a>
+    </section>
+
+    <!-- ============ LETTER ============ -->
+    <section class="letter" id="letter">
+      <div class="wrap letter-grid">
+        <figure class="letter-img">
+          <img src="images/ghats-boats.jpg" alt="Boats moored at the stone ghats of Varanasi" loading="lazy" width="1600" height="1867" />
+        </figure>
+        <div class="letter-text">
+          <p class="kicker" data-hi="बाबू की ओर से एक चिट्ठी">A note from Babu</p>
+          <h2 data-hi="आइए, थोड़ी देर<br/>हमारे साथ बैठिए।">Come, sit with us a while.</h2>
+          <p class="dropcap">In Banaras, nothing is rushed. A saree takes weeks on the loom. A morning on the Ganga starts before the sun does. Chai is poured slowly and drunk slower still.</p>
+          <p>We started Babu Banarasi to share that unhurried city with the world: the silk our weavers make by hand, the ghats we grew up walking, the food from our own fields. Everything here comes straight from the people who make it, and we vouch for every piece and every experience as we would for family.</p>
+          <p>So, <em class="banarasi" title="Banarasi for “How's it going, friend?”">ka ho, Guru?</em> Tell us what brings you to Kashi, and we'll take it from there.</p>
+          <p class="signoff"><span lang="hi">आइए, बनारस आपका इंतज़ार कर रहा है।</span><br/><span class="signoff-en">Come, Banaras is waiting for you.</span></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PILLARS ============ -->
+    <section class="pillars">
+      <div class="wrap pillar-grid">
+        <a class="pillar" href="#weaves">
+          <span class="pillar-img"><img src="images/saree-blue.jpg" alt="" loading="lazy" width="1400" height="930" /></span>
+          <span class="pillar-num">I</span>
+          <h3 data-hi="बुनकरी">The Weaves</h3>
+          <p>Pure handloom silk, straight from the weavers' homes.</p>
+        </a>
+        <a class="pillar" href="#experiences">
+          <span class="pillar-img"><img src="images/aarti.jpg" alt="" loading="lazy" width="1400" height="933" /></span>
+          <span class="pillar-num">II</span>
+          <h3 data-hi="ठहराव और अनुभव">Stays &amp; Experiences</h3>
+          <p>Ghats, ragas, stupas and lanes, the way locals know them.</p>
+        </a>
+        <a class="pillar" href="#pantry">
+          <span class="pillar-img"><img src="images/spices.jpg" alt="" loading="lazy" width="1400" height="987" /></span>
+          <span class="pillar-num">III</span>
+          <h3 data-hi="रसोई भंडार">The Pantry</h3>
+          <p>Staples from our own fields, traced from seed to your kitchen.</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- ============ A DAY IN KASHI ============ -->
+    <section class="day" id="day">
+      <div class="wrap">
+        <header class="sec-head center">
+          <p class="kicker" data-hi="काशी का एक दिन">A day in Kashi</p>
+          <h2 data-hi="पहली घंटी से<br/><em>आख़िरी पान तक।</em>">From the first bell<br/><em>to the last paan.</em></h2>
+          <p data-hi="बनारस अपनी घड़ी से चलता है। यह रहा एक दिन, पहर-दर-पहर, जैसा हम आपके साथ बिताना चाहेंगे।">Banaras keeps its own clock. Here is a day as we'd spend it with you, hour by hour.</p>
+        </header>
+
+        <div class="day-grid">
+          <div class="day-visual" aria-hidden="true">
+            <div class="day-frame">
+              <img class="day-img is-on" src="images/fest-ganga-dawn.jpg" alt="" width="1400" height="961" />
+              <img class="day-img" src="images/fest-ganga-dawn.jpg" alt="" width="1400" height="961" />
+            </div>
+            <p class="day-clock"><span class="day-clock-t">4:45</span> <span class="day-clock-m">am</span></p>
+          </div>
+
+          <ol class="moments">
+            <li class="moment" data-bg="#1e2236" data-dark="1" data-img="images/fest-ganga-dawn.jpg" data-t="4:45" data-m="am">
+              <img class="moment-img" src="images/fest-ganga-dawn.jpg" alt="Priests on platforms at the river's edge at dawn" loading="lazy" width="1400" height="961" />
+              <p class="m-time">4:45 am · <span>Brahma muhurta</span></p>
+              <h3>The city wakes before the sun</h3>
+              <p>Temple bells start in the dark. At Assi, Subah-e-Banaras begins with Vedic chants, a morning raga and the aarti, while the sky turns from indigo to rose.</p>
+            </li>
+            <li class="moment" data-bg="#f0d5c3" data-img="images/boat-sunrise.jpg" data-t="6:15" data-m="am">
+              <img class="moment-img" src="images/boat-sunrise.jpg" alt="Wooden boats on the Ganga at sunrise" loading="lazy" width="1400" height="883" />
+              <p class="m-time">6:15 am · <span>Sunrise</span></p>
+              <h3>On the river, past the ghats</h3>
+              <p>A wooden boat drifts downstream from Assi. Pilgrims bathe, the dhobis begin their washing, and the first light turns the sandstone gold.</p>
+            </li>
+            <li class="moment" data-bg="#f7ead2" data-img="images/food-jalebi.jpg" data-t="8:30" data-m="am">
+              <img class="moment-img" src="images/food-jalebi.jpg" alt="Fresh jalebis at a street stall" loading="lazy" width="1200" height="1802" />
+              <p class="m-time">8:30 am · <span>Nashta</span></p>
+              <h3>Kachori, sabzi and hot jalebi</h3>
+              <p>Breakfast is eaten standing up in the galis: puffed kachoris with spicy aloo, jalebi straight from the kadhai, and a kulhad of chai to finish.</p>
+            </li>
+            <li class="moment" data-bg="#f3e3c3" data-img="images/loom-master.jpg" data-t="11:00" data-m="am">
+              <img class="moment-img" src="images/loom-master.jpg" alt="A master weaver at his handloom" loading="lazy" width="1400" height="910" />
+              <p class="m-time">11:00 am · <span>At the loom</span></p>
+              <h3>The clack of the handloom</h3>
+              <p>In Madanpura and Sarai Mohana, the rhythm of the looms carries into the lanes. Sit with a weaver while a single motif grows, one thread at a time.</p>
+            </li>
+            <li class="moment" data-bg="#ead3a2" data-img="images/sarnath-stupa.jpg" data-t="3:00" data-m="pm">
+              <img class="moment-img" src="images/sarnath-stupa.jpg" alt="The Dhamek Stupa at Sarnath" loading="lazy" width="1600" height="1067" />
+              <p class="m-time">3:00 pm · <span>Sarnath</span></p>
+              <h3>Ten kilometres, and a world away</h3>
+              <p>Drive out to Sarnath, where the Buddha gave his first sermon. Sit under the trees by the Dhamek Stupa while the afternoon goes quiet.</p>
+            </li>
+            <li class="moment" data-bg="#dda56c" data-img="images/food-chaat-stall.jpg" data-t="5:30" data-m="pm">
+              <img class="moment-img" src="images/food-chaat-stall.jpg" alt="A street food vendor's stall with bowls of ingredients" loading="lazy" width="1200" height="772" />
+              <p class="m-time">5:30 pm · <span>Godhuli</span></p>
+              <h3>Chaat in the evening rush</h3>
+              <p>As the light softens, Godowlia fills up. Tamatar chaat in a leaf bowl, sweet, sour and smoky, is how Banaras says the working day is done.</p>
+            </li>
+            <li class="moment" data-bg="#7d2a1d" data-dark="1" data-img="images/aarti.jpg" data-t="Dusk" data-m="">
+              <img class="moment-img" src="images/aarti.jpg" alt="Priests performing the Ganga aarti with brass lamps" loading="lazy" width="1400" height="933" />
+              <p class="m-time">After sunset · <span>Aarti</span></p>
+              <h3>Fire on the water</h3>
+              <p>Bells, conch shells and great brass lamps at Dashashwamedh. The aarti begins soon after sunset, which today in Banaras is at <span class="js-sunset">dusk</span>.</p>
+            </li>
+            <li class="moment" data-bg="#3b1626" data-dark="1" data-img="images/sitar.jpg" data-t="9:00" data-m="pm">
+              <img class="moment-img" src="images/sitar.jpg" alt="Hands playing a sitar" loading="lazy" width="1200" height="800" />
+              <p class="m-time">9:00 pm · <span>Baithak</span></p>
+              <h3>Ragas on a rooftop</h3>
+              <p>A small gathering, a sitar and a tabla, the river dark below. Music is how Banaras ends its day, as it has for centuries.</p>
+            </li>
+            <li class="moment" data-bg="#1b1017" data-dark="1" data-img="images/food-paan-leaves.jpg" data-t="10:30" data-m="pm">
+              <img class="moment-img" src="images/food-paan-leaves.jpg" alt="Bundles of fresh betel leaves" loading="lazy" width="1200" height="913" />
+              <p class="m-time">10:30 pm · <span>Paan</span></p>
+              <h3>A Banarasi paan to close the day</h3>
+              <p>A betel leaf folded around gulkand, fennel and a little katha. Every Banarasi has their own paanwala, and no evening is complete without a stop there.</p>
+              <a class="btn btn-gold" data-wa="Namaste Babu Banarasi! I'd love to plan a full day in Kashi like the one on your website." href="#contact" data-hi="ऐसा एक दिन प्लान करें">Plan a day like this</a>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ WEAVES ============ -->
+    <section class="section" id="weaves">
+      <div class="wrap">
+        <header class="sec-head center">
+          <p class="kicker" data-hi="I · बुनकरी">I · The Weaves</p>
+          <h2 data-hi="हाथ से बुना,<br/><em>मशीन से कभी नहीं।</em>">Woven by hand,<br/><em>never by machine.</em></h2>
+          <p data-hi="हर साड़ी वाराणसी के किसी बुनकर के घर से आती है, बीच में कोई बिचौलिया नहीं। इसे पहनना यानी किसी के हफ़्तों के धैर्य और पीढ़ियों से चली आ रही कला को पहनना।">Every saree comes from a weaver's home in Varanasi, with no wholesalers in between. When you wear one, you carry weeks of someone's patience and a craft handed down from parent to child.</p>
+        </header>
+
+        <div class="weave-feature">
+          <figure class="weave-main">
+            <img src="images/saree-red.jpg" alt="Woman wearing a deep purple Banarasi silk saree with a gold zari border" loading="lazy" width="1400" height="2100" />
+          </figure>
+          <div class="weave-list">
+            <ol class="fabrics">
+              <li><span class="f-num">01</span><div><h3>Katan Silk</h3><p>Pure mulberry silk, tightly twisted and heavy with zari. The bride's saree.</p></div></li>
+              <li><span class="f-num">02</span><div><h3>Organza</h3><p>Sheer, crisp and luminous, with delicate floral buttis that catch the light.</p></div></li>
+              <li><span class="f-num">03</span><div><h3>Georgette</h3><p>A fluid drape that's easy to wear, with Banarasi motifs for festive days.</p></div></li>
+              <li><span class="f-num">04</span><div><h3>Tussar</h3><p>Wild silk with a natural golden sheen and a rich, earthy hand-feel.</p></div></li>
+            </ol>
+            <a class="btn btn-maroon" data-wa="Namaste Babu Banarasi! I'd love to see your handloom saree collection." href="#contact" data-hi="व्हाट्सऐप पर कलेक्शन देखें">View the collection on WhatsApp</a>
+          </div>
+        </div>
+
+        <div class="weave-duo">
+          <figure>
+            <img src="images/saree-purple.jpg" alt="Bride in a purple silk saree with jewellery" loading="lazy" width="1400" height="2100" class="focus-top" />
+            <figcaption>Bridal Katan · made to order</figcaption>
+          </figure>
+          <figure>
+            <img src="images/saree-blue.jpg" alt="Woman in a blue and gold silk saree" loading="lazy" width="1400" height="930" />
+            <figcaption>Festive silks</figcaption>
+          </figure>
+        </div>
+
+        <ul class="marks">
+          <li><strong>Silk Mark</strong><span>Purity assured</span></li>
+          <li><strong>Handloom Mark</strong><span>Verified hand-woven</span></li>
+          <li><strong>GI · Banarasi Brocade</strong><span>Woven only in Varanasi</span></li>
+          <li><strong>Weaver's Card</strong><span>Know whose hands made it</span></li>
+        </ul>
+
+        <!-- Motif glossary -->
+        <div class="motifs" id="motifs">
+          <header class="sec-head center">
+            <p class="kicker" data-hi="बनारसी के नमूने">The motifs</p>
+            <h2 data-hi="साड़ी को वैसे पढ़िए<br/><em>जैसे बुनकर पढ़ता है।</em>">Read a saree<br/><em>the way a weaver does.</em></h2>
+          </header>
+          <ul class="motif-grid">
+            <li class="motif">
+              <svg viewBox="0 0 80 80" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><circle cx="40" cy="30" r="4"/><path d="M40 26c-4-8-1-14 0-16 1 2 4 8 0 16zM44 30c8-4 14-1 16 0-2 1-8 4-16 0zM36 30c-8-4-14-1-16 0 2 1 8 4 16 0zM43 33c6 6 6 12 5 14-2-1-7-5-5-14zM37 33c-6 6-6 12-5 14 2-1 7-5 5-14z"/><path d="M40 47v21M40 61c-6-2-9-6-10-9 4 0 8 3 10 9zM40 57c6-2 9-6 10-9-4 0-8 3-10 9z"/></g></svg>
+              <h3>Butti <span lang="hi">बूटी</span></h3>
+              <p>Small flowers or leaves scattered across the body of the saree. The smaller and closer they sit, the more hours on the loom.</p>
+            </li>
+            <li class="motif">
+              <svg viewBox="0 0 80 80" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.3"><path d="M40 6Q56 23 40 40Q24 23 40 6zM40 40Q56 57 40 74Q24 57 40 40zM6 40Q23 24 40 40Q23 56 6 40zM74 40Q57 24 40 40Q57 56 74 40z"/><path d="M14 14l52 52M66 14L14 66" stroke-dasharray="2 4"/><circle cx="40" cy="40" r="3.5"/><circle cx="14" cy="14" r="2.5"/><circle cx="66" cy="14" r="2.5"/><circle cx="14" cy="66" r="2.5"/><circle cx="66" cy="66" r="2.5"/></g></svg>
+              <h3>Jaal <span lang="hi">जाल</span></h3>
+              <p>A net of vines and flowers that covers the whole saree, leaving almost no plain silk. Usually kept for the richest bridal pieces.</p>
+            </li>
+            <li class="motif">
+              <svg viewBox="0 0 80 80" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M2 40c13-16 25-16 38 0s25 16 38 0"/><path d="M21 28c-2-8 3-13 7-14 1 5-2 11-7 14zM59 52c2 8-3 13-7 14-1-5 2-11 7-14zM40 40c3-7 9-9 13-8-2 5-7 8-13 8zM40 40c-3 7-9 9-13 8 2-5 7-8 13-8z"/><path d="M2 16h76M2 64h76" stroke-dasharray="2 4"/></g></svg>
+              <h3>Bel <span lang="hi">बेल</span></h3>
+              <p>A running creeper along the border or the pallu. It stands for continuity and growth, which is why it so often frames a bridal saree.</p>
+            </li>
+            <li class="motif">
+              <svg viewBox="0 0 80 80" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M52 10c-8 2-32 14-32 40 0 10 7 18 18 18s19-8 19-18c0-9-7-15-14-15-6 0-10 4-10 9"/><path d="M52 10c-4 4-6 9-5 14"/><path d="M44 26c-12 6-17 14-17 23 0 7 5 12 11 12" stroke-dasharray="1.5 3"/><circle cx="38" cy="49" r="3"/></g></svg>
+              <h3>Kalga <span lang="hi">कलगा</span></h3>
+              <p>The paisley, shaped like a mango or a flame bending in the wind. Woven alone as a large motif, or in rows across the pallu.</p>
+            </li>
+            <li class="motif">
+              <svg viewBox="0 0 80 80" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M8 72V8h64M15 72V15h57"/><path d="M22 22c10 0 18 4 22 12M22 22c0 10 4 18 12 22M22 22l15 15"/><circle cx="42" cy="42" r="5"/><path d="M46 47c6 6 7 12 6 14M41 48c0 8-2 12-5 13M48 41c8 0 12-2 13-5"/></g></svg>
+              <h3>Konia <span lang="hi">कोनिया</span></h3>
+              <p>A motif tucked into the corner where the border meets the pallu. Small and easy to miss, and a sign of a careful weaver.</p>
+            </li>
+            <li class="motif">
+              <svg viewBox="0 0 80 80" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M60 70V36M60 46l-8-7M60 42l7-6M60 54l-8-5"/><path d="M60 32c-10 0-12-10-6-14 0-8 12-8 12 0 6 4 4 14-6 14z"/><path d="M12 50c5-5 14-5 21-3l6-6 3 2-3 6c2 2 2 5 0 7l1 14M16 52l-2 18M22 54l1 16M35 57l3 13"/><path d="M39 41l-3-8M39 41l4-8M37 36l-3-2M41 36l3-2"/><path d="M4 74h72" stroke-dasharray="2 4"/></g></svg>
+              <h3>Shikargah <span lang="hi">शिकारगाह</span></h3>
+              <p>Hunting scenes of deer, horses and riders among trees. An old courtly design that only a few master weavers still take on.</p>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Saree finder -->
+        <div class="finder" id="finder">
+          <div class="finder-head">
+            <p class="kicker" data-hi="अपनी बनारसी चुनिए">Find your Banarasi</p>
+            <h2 data-hi="आपकी बनारसी<br/><em>कौन-सी है?</em>">Which Banarasi<br/><em>is yours?</em></h2>
+            <p>Three quick choices, and we'll suggest where to start. Then send it to us and we'll show you real pieces on a video call.</p>
+          </div>
+          <form class="finder-form" id="finder-form">
+            <fieldset>
+              <legend><span>1</span> The occasion</legend>
+              <label><input type="radio" name="occasion" value="My wedding" checked /><span>My wedding</span></label>
+              <label><input type="radio" name="occasion" value="A wedding I'm attending" /><span>A wedding I'm attending</span></label>
+              <label><input type="radio" name="occasion" value="Festivals &amp; pujas" /><span>Festivals &amp; pujas</span></label>
+              <label><input type="radio" name="occasion" value="A gift" /><span>A gift</span></label>
+              <label><input type="radio" name="occasion" value="Everyday elegance" /><span>Everyday elegance</span></label>
+            </fieldset>
+            <fieldset>
+              <legend><span>2</span> Colours you love</legend>
+              <label><input type="radio" name="colour" value="Reds &amp; maroons" checked /><span><i class="sw" style="--c:#8e1b2c"></i>Reds &amp; maroons</span></label>
+              <label><input type="radio" name="colour" value="Pinks &amp; peaches" /><span><i class="sw" style="--c:#e3a49a"></i>Pinks &amp; peaches</span></label>
+              <label><input type="radio" name="colour" value="Golds &amp; ivories" /><span><i class="sw" style="--c:#d9c08a"></i>Golds &amp; ivories</span></label>
+              <label><input type="radio" name="colour" value="Blues &amp; greens" /><span><i class="sw" style="--c:#1f4e5f"></i>Blues &amp; greens</span></label>
+              <label><input type="radio" name="colour" value="Purples &amp; wines" /><span><i class="sw" style="--c:#4b1f4a"></i>Purples &amp; wines</span></label>
+              <label><input type="radio" name="colour" value="Help me choose" /><span><i class="sw sw-any"></i>Help me choose</span></label>
+            </fieldset>
+            <fieldset>
+              <legend><span>3</span> How it should feel</legend>
+              <label><input type="radio" name="feel" value="Rich and regal" checked /><span>Rich and regal</span></label>
+              <label><input type="radio" name="feel" value="Somewhere in between" /><span>Somewhere in between</span></label>
+              <label><input type="radio" name="feel" value="Light and airy" /><span>Light and airy</span></label>
+            </fieldset>
+          </form>
+          <div class="finder-result" aria-live="polite">
+            <p class="kicker">Babu suggests</p>
+            <h3 id="finder-title">Katan silk with Kadwa brocade</h3>
+            <p id="finder-text">Dense gold zari, a jaal or shikargah pallu, and a saree heavy enough to be handed down.</p>
+            <a class="btn btn-maroon" id="finder-wa" data-wa="Namaste Babu Banarasi!" href="#contact" data-hi="यह बाबू को व्हाट्सऐप पर भेजें">Send this to Babu on WhatsApp</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CRAFT BAND ============ -->
+    <section class="craft">
+      <img class="craft-img" src="images/loom-weaver.jpg" alt="A weaver working at a handloom" loading="lazy" width="1600" height="1064" />
+      <div class="craft-veil"></div>
+      <div class="wrap craft-content">
+        <blockquote>
+          “A machine can copy a pattern.<br/>Only a weaver can give it a soul.”
+        </blockquote>
+        <p class="kicker light">At the loom</p>
+      </div>
+    </section>
+
+    <section class="section techniques">
+      <div class="wrap tech-grid">
+        <figure class="tech-img"><img src="images/loom-detail.jpg" alt="Close view of threads on a handloom" loading="lazy" width="1400" height="933" /></figure>
+        <div>
+          <p class="kicker">The language of the loom</p>
+          <h2>Four words every<br/>Banarasi lover knows.</h2>
+          <dl class="tech-list">
+            <div><dt>Kadwa</dt><dd>Each motif woven separately by hand. Turn the saree over and there are no loose threads: the surest sign of a true handloom.</dd></div>
+            <div><dt>Meenakari</dt><dd>Coloured silk threads set into the gold like enamel on jewellery.</dd></div>
+            <div><dt>Tanchoi</dt><dd>Dense, layered patterns woven with several coloured wefts at once.</dd></div>
+            <div><dt>Brocade</dt><dd>Raised gold and silver zari motifs, the signature of Banaras for centuries.</dd></div>
+          </dl>
+        </div>
+      </div>
+
+      <!-- Where it's woven -->
+      <div class="wrap woven">
+        <div class="woven-intro">
+          <p class="kicker" data-hi="जहाँ बुनी जाती हैं">Where they're woven</p>
+          <h2 data-hi="हर साड़ी का<br/><em>एक मोहल्ला है।</em>">Every saree<br/><em>has a neighbourhood.</em></h2>
+          <p>Banarasi weaving lives in a handful of old mohallas, in homes where the loom sits in the front room and the whole family knows the craft. We buy straight from those homes.</p>
+          <p class="woven-note">Ask us on WhatsApp, and we'll introduce you to the weaver of your saree on a video call.</p>
+        </div>
+        <ul class="mohallas">
+          <li><h3>Madanpura</h3><p>Near Dashashwamedh, the old heart of silk weaving, its narrow lanes full of the sound of looms.</p></li>
+          <li><h3>Sarai Mohana</h3><p>A riverside weavers' village in the north of the city, known for fine Katan and Kadwa work.</p></li>
+          <li><h3>Lohta</h3><p>On the western edge of Varanasi, where whole streets of families still weave at home.</p></li>
+          <li><h3>Peeli Kothi</h3><p>Close to the old city, a centre of the zari and brocade trade for generations.</p></li>
+        </ul>
+        <dl class="woven-stats">
+          <div><dt>2 weeks</dt><dd>for a light saree with simple buttis</dd></div>
+          <div><dt>Months</dt><dd>for a full Kadwa jaal bridal piece</dd></div>
+          <div><dt>1</dt><dd>weaver, often helped by family, from first thread to last</dd></div>
+        </dl>
+      </div>
+
+      <!-- Other GI crafts -->
+      <div class="wrap crafts">
+        <header class="crafts-head">
+          <p class="kicker">Beyond silk</p>
+          <h3 data-hi="रेशम के आगे: काशी की और कलाएँ">The other crafts of Kashi</h3>
+          <p>Banaras has several crafts protected by a GI tag. We're putting together a small gifting collection with the families who make them.</p>
+        </header>
+        <ul class="craft-grid">
+          <li>
+            <svg viewBox="0 0 48 48" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.3"><path d="M24 6l6 12 12 6-12 6-6 12-6-12-12-6 12-6z"/><circle cx="24" cy="24" r="5"/></g></svg>
+            <h4>Gulabi Meenakari</h4><p>Pink enamel set into silver and gold by hand. A rare art, kept alive by a few families.</p>
+          </li>
+          <li>
+            <svg viewBox="0 0 48 48" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.3"><path d="M24 4v6M14 14c0-3 4-4 10-4s10 1 10 4c0 8-4 16-10 26-6-10-10-18-10-26z"/><path d="M15 20h18M17 27h14"/></g></svg>
+            <h4>Lacquerware toys</h4><p>Wooden tops, rattles and figures, turned on a lathe and coloured with lac.</p>
+          </li>
+          <li>
+            <svg viewBox="0 0 48 48" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.3"><path d="M6 14c6 16 30 16 36 0"/><circle cx="10" cy="20" r="3"/><circle cx="17" cy="25" r="3"/><circle cx="24" cy="27" r="3.5"/><circle cx="31" cy="25" r="3"/><circle cx="38" cy="20" r="3"/></g></svg>
+            <h4>Glass beads</h4><p>Hand-wound glass beads in every colour, made in Varanasi's bead workshops.</p>
+          </li>
+          <li>
+            <svg viewBox="0 0 48 48" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.3"><rect x="7" y="7" width="34" height="34"/><path d="M7 24h34M24 7v34M7 7l34 34M41 7L7 41"/><circle cx="24" cy="24" r="7"/></g></svg>
+            <h4>Soft-stone jali</h4><p>Lattice screens and boxes carved from a single piece of soft stone.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ BANARASI KHANA ============ -->
+    <section class="section khana" id="khana">
+      <div class="wrap">
+        <header class="sec-head center">
+          <p class="kicker" data-hi="बनारसी खाना">Banarasi Khana</p>
+          <h2 data-hi="एक शहर,<br/><em>जिसे चखा जा सकता है।</em>">A city<br/><em>you can taste.</em></h2>
+          <p data-hi="बनारस मौसम और पहर के हिसाब से खाता है। यह रहा वह सब जो हम आपके सामने रखेंगे, और कब।">Banaras eats by the season and by the hour. Here's what we'd put in front of you, and when.</p>
+        </header>
+
+        <div class="khana-photos">
+          <figure class="kp-tall"><img src="images/food-thandai.jpg" alt="Glasses of thandai beside bowls of coloured powder for Holi" loading="lazy" width="1200" height="1800" /><figcaption>Thandai at Holi</figcaption></figure>
+          <figure><img src="images/food-chaat-stall.jpg" alt="A chaat vendor's stall with bowls of toppings" loading="lazy" width="1200" height="772" /><figcaption>The evening chaat stall</figcaption></figure>
+          <figure><img src="images/food-paan-leaves.jpg" alt="Bundles of fresh betel leaves" loading="lazy" width="1200" height="913" /><figcaption>Fresh paan leaves</figcaption></figure>
+          <figure class="kp-wide"><img src="images/food-snacks.jpg" alt="A street vendor's basket of fried snacks" loading="lazy" width="1200" height="800" /><figcaption>Something fried, always</figcaption></figure>
+        </div>
+
+        <p class="season-line" id="season-line">In season now in Banaras: kachori, chaat and paan, as always.</p>
+
+        <ul class="menu">
+          <li class="dish" data-season="11,12,1,2"><div class="dish-head"><h3>Malaiyo</h3><span lang="hi">मलइयो</span><em class="dish-when">Nov – Feb</em></div><p>Milk left out under the winter dew, then whisked into a cloud with saffron and pistachio. Gone by mid-morning, and made only in the cold months.</p></li>
+          <li class="dish" data-season="all"><div class="dish-head"><h3>Kachori &amp; jalebi</h3><span lang="hi">कचौड़ी-जलेबी</span><em class="dish-when">Every morning</em></div><p>The Banarasi breakfast: puffed kachoris with a spicy potato sabzi, then jalebi hot from the kadhai.</p></li>
+          <li class="dish" data-season="all"><div class="dish-head"><h3>Tamatar chaat</h3><span lang="hi">टमाटर चाट</span><em class="dish-when">Every evening</em></div><p>Tomatoes cooked down with potato, ginger and spices, topped with crushed namak-para and a sweet syrup. You won't find it like this anywhere else.</p></li>
+          <li class="dish" data-season="11,12,1,2"><div class="dish-head"><h3>Choora matar</h3><span lang="hi">चूड़ा मटर</span><em class="dish-when">Winter</em></div><p>Flattened rice tossed with fresh green peas, ghee and a little sugar, when the winter peas are at their sweetest.</p></li>
+          <li class="dish" data-season="all"><div class="dish-head"><h3>Launglata</h3><span lang="hi">लौंगलता</span><em class="dish-when">All year</em></div><p>A crisp pastry filled with khoya, sealed shut with a single clove and soaked in syrup.</p></li>
+          <li class="dish" data-season="all"><div class="dish-head"><h3>Rabri</h3><span lang="hi">रबड़ी</span><em class="dish-when">All year</em></div><p>Milk simmered for hours until it gathers into soft layers of cream, served cold in a kulhad.</p></li>
+          <li class="dish" data-season="3,4,5,6"><div class="dish-head"><h3>Thandai</h3><span lang="hi">ठंडाई</span><em class="dish-when">Holi to summer</em></div><p>Chilled milk ground with almonds, fennel, rose and black pepper. Poured by the bucket at Holi and Mahashivratri.</p></li>
+          <li class="dish" data-season="4,5,6,7,8,9"><div class="dish-head"><h3>Kulhad lassi</h3><span lang="hi">कुल्हड़ लस्सी</span><em class="dish-when">The warm months</em></div><p>Thick curd churned by hand, topped with a layer of malai, served in a clay cup that goes back to the earth.</p></li>
+          <li class="dish" data-season="6,7"><div class="dish-head"><h3>Langda aam</h3><span lang="hi">लंगड़ा आम</span><em class="dish-when">June – July</em></div><p>Banaras's own mango, still green-skinned when ripe, sweet and almost fibreless. It carries a GI tag.</p></li>
+          <li class="dish" data-season="all"><div class="dish-head"><h3>Banarasi paan</h3><span lang="hi">बनारसी पान</span><em class="dish-when">After every meal</em></div><p>Betel leaf folded with gulkand, fennel and katha. It carries a GI tag, and the city has a paanwala on every corner.</p></li>
+        </ul>
+
+        <!-- Cooking class -->
+        <div class="cook">
+          <figure class="cook-img"><img src="images/cooking-tawa.jpg" alt="Hands cooking flatbreads on a tawa" loading="lazy" width="1400" height="933" /></figure>
+          <div class="cook-text">
+            <p class="kicker" data-hi="हमारे साथ पकाइए">Cook with us</p>
+            <h3 data-hi="बनारसी रसोई,<br/><em>परिवार की थाली।</em>">A Banarasi kitchen,<br/><em>a family table.</em></h3>
+            <p>Spend a morning in a family kitchen in the old city. Buy vegetables at the market, roll kachoris, cook tamatar chaat and aloo sabzi together, then sit down to eat the meal you made.</p>
+            <ul class="cook-facts"><li>Half a day</li><li>Small groups</li><li>Vegetarian · sattvic on request</li></ul>
+            <a class="btn btn-maroon" data-wa="Namaste Babu Banarasi! I'd like to book a Banarasi home cooking morning." href="#contact" data-hi="कुकिंग मॉर्निंग बुक करें">Book a cooking morning</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ EXPERIENCES ============ -->
+    <section class="section section-ivory-deep" id="experiences">
+      <div class="wrap">
+        <header class="sec-head center">
+          <p class="kicker" data-hi="II · अनुभव">II · Experiences</p>
+          <h2 data-hi="बनारस देखा नहीं जाता,<br/><em>जिया जाता है।</em>">Banaras isn't seen.<br/><em>It is lived.</em></h2>
+          <p data-hi="हम आपको वह बनारस दिखाएँगे जिसे हम जानते हैं: हमारे माँझी, हमारे बुनकर, बनारस घराने के संगीतकार, और सारनाथ की शांति।">We'll take you to the Banaras we know: our boatmen, our weavers, the musicians of the Banaras Gharana, and the quiet of Sarnath.</p>
+        </header>
+
+        <div class="exp-grid">
+          <article class="exp exp-tall">
+            <img src="images/boat-sunrise.jpg" alt="Wooden boats on the Ganga at dawn" loading="lazy" width="1400" height="883" />
+            <div class="exp-body">
+              <span class="exp-tag">Dawn on the Ganga</span>
+              <h3>Private Sunrise Boat</h3>
+              <p>A wooden boat from Assi to Manikarnika, past the old ghats, with a local storyteller and kulhad chai.</p>
+            </div>
+          </article>
+          <article class="exp">
+            <img src="images/aarti.jpg" alt="Priests performing the Ganga aarti with flaming lamps" loading="lazy" width="1400" height="933" />
+            <div class="exp-body">
+              <span class="exp-tag">Evening</span>
+              <h3>Aarti &amp; Assisted Darshan</h3>
+              <p>Good seats for the aarti, and trusted escorts for Kashi Vishwanath and Kal Bhairav.</p>
+            </div>
+          </article>
+          <article class="exp">
+            <img src="images/loom-master.jpg" alt="Master weaver at his loom" loading="lazy" width="1400" height="910" />
+            <div class="exp-body">
+              <span class="exp-tag">Craft</span>
+              <h3>Inside a Weaver's Home</h3>
+              <p>Sit beside a master weaver in Madanpura and watch silk turn into a saree.</p>
+            </div>
+          </article>
+          <article class="exp">
+            <img src="images/kulhad-chai.jpg" alt="Kulhad chai served in clay cups" loading="lazy" width="1200" height="1600" />
+            <div class="exp-body">
+              <span class="exp-tag">Morning</span>
+              <h3>Subah-e-Banaras &amp; Yoga</h3>
+              <p>The morning ragas at Assi Ghat, then yoga on a quiet terrace and chai in a kulhad.</p>
+            </div>
+          </article>
+          <article class="exp exp-tall">
+            <img src="images/food-jalebi.jpg" alt="Fresh jalebis at a street food stall" loading="lazy" width="1200" height="1802" />
+            <div class="exp-body">
+              <span class="exp-tag">Food</span>
+              <h3>Old City Food Trail</h3>
+              <p>Kachori-jalebi at dawn, chaat at dusk, lassi in between, through the gallis of Chowk.</p>
+            </div>
+          </article>
+          <article class="exp">
+            <img src="images/sitar.jpg" alt="Hands playing a sitar" loading="lazy" width="1200" height="800" />
+            <div class="exp-body">
+              <span class="exp-tag">Music</span>
+              <h3>Sitar &amp; Tabla Baithak</h3>
+              <p>An intimate rooftop recital by musicians of the Banaras Gharana.</p>
+            </div>
+          </article>
+          <article class="exp">
+            <img src="images/sarnath-monks.jpg" alt="Monks meditating near the Dhamek Stupa at Sarnath" loading="lazy" width="1400" height="933" />
+            <div class="exp-body">
+              <span class="exp-tag">Sarnath</span>
+              <h3>Buddhist Heritage &amp; Meditation</h3>
+              <p>The Dhamek Stupa, the Ashoka Lion Capital, and quiet hours at the monasteries.</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="center mt">
+          <a class="btn btn-maroon" data-wa="Namaste Babu Banarasi! I'm planning a trip to Varanasi. Could you help me with experiences?" href="#contact" data-hi="बनारस में मेरे दिन प्लान करें">Plan my days in Banaras</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FESTIVALS ============ -->
+    <section class="section festivals" id="festivals">
+      <div class="wrap">
+        <div class="fest-top">
+          <header class="sec-head">
+            <p class="kicker" data-hi="त्योहारों का साल">The festival year</p>
+            <h2 data-hi="उत्सव में डूबे शहर<br/><em>के लिए आइए।</em>">Come for the city<br/><em>in celebration.</em></h2>
+            <p data-hi="बनारस में लगभग हर हफ़्ते कोई उत्सव होता है। ये वे दिन हैं जिनके इर्द-गिर्द हम पूरी यात्रा बनाएँगे। तिथियाँ हिंदू पंचांग से तय होती हैं, इसलिए इस साल की तारीख़ों के लिए हमें लिखें।">Banaras celebrates something almost every week. These are the days we'd plan a whole trip around. Dates follow the Hindu calendar and move every year, so write to us for this year's dates.</p>
+          </header>
+          <div class="fest-nav">
+            <button type="button" class="fest-btn" data-dir="-1" aria-label="Previous festivals">←</button>
+            <button type="button" class="fest-btn" data-dir="1" aria-label="Next festivals">→</button>
+          </div>
+        </div>
+      </div>
+      <div class="fest-track" id="fest-track" tabindex="0" aria-label="Festivals of Banaras, scroll sideways">
+        <article class="fest" data-months="2,3">
+          <div class="fest-mark"><span class="fm-en">Feb – Mar</span><span class="fm-hi" lang="hi">फाल्गुन</span></div>
+          <p class="fest-when">Phalgun · Tulsi Ghat</p>
+          <h3>Dhrupad Mela</h3>
+          <p>Several nights of dhrupad, India's oldest surviving classical form, sung on the stone steps of Tulsi Ghat.</p>
+          <a class="fest-link" data-wa="Namaste! I'd like to plan a trip around the Dhrupad Mela at Tulsi Ghat." href="#contact">Plan around this →</a>
+        </article>
+        <article class="fest" data-months="2,3">
+          <figure><img src="images/aarti-lamp.jpg" alt="A tiered brass lamp with many flames" loading="lazy" width="1200" height="1800" /></figure>
+          <p class="fest-when">Phalgun · Feb – Mar</p>
+          <h3>Mahashivratri</h3>
+          <p>Kashi is Shiva's own city, and this is his night. Processions, all-night prayers at Kashi Vishwanath, and nobody sleeps.</p>
+          <a class="fest-link" data-wa="Namaste! I'd like to plan a trip around Mahashivratri in Kashi." href="#contact">Plan around this →</a>
+        </article>
+        <article class="fest" data-months="3">
+          <figure><img src="images/fest-holi.jpg" alt="A crowd throwing coloured powder during Holi" loading="lazy" width="1400" height="933" /></figure>
+          <p class="fest-when">Phalgun · March</p>
+          <h3>Holi &amp; Rangbhari Ekadashi</h3>
+          <p>It starts days early, when gulal flies at Kashi Vishwanath on Rangbhari Ekadashi, then spills into every ghat and gali.</p>
+          <a class="fest-link" data-wa="Namaste! I'd like to plan a trip around Holi in Banaras." href="#contact">Plan around this →</a>
+        </article>
+        <article class="fest" data-months="4">
+          <div class="fest-mark"><span class="fm-en">April</span><span class="fm-hi" lang="hi">चैत्र</span></div>
+          <p class="fest-when">Chaitra · Sankat Mochan</p>
+          <h3>Sankat Mochan Sangeet Samaroh</h3>
+          <p>For nearly a week around Hanuman Jayanti, India's great musicians play through the night in the temple courtyard, free and open to all.</p>
+          <a class="fest-link" data-wa="Namaste! I'd like to plan a trip around the Sankat Mochan music festival." href="#contact">Plan around this →</a>
+        </article>
+        <article class="fest" data-months="4,5">
+          <figure><img src="images/sarnath-monks.jpg" alt="Monks at Sarnath" loading="lazy" width="1400" height="933" /></figure>
+          <p class="fest-when">Vaishakh · Sarnath</p>
+          <h3>Buddha Purnima</h3>
+          <p>Monks and pilgrims from across Asia gather at Sarnath to remember the Buddha's birth, awakening and passing.</p>
+          <a class="fest-link" data-wa="Namaste! I'd like to visit Sarnath for Buddha Purnima." href="#contact">Plan around this →</a>
+        </article>
+        <article class="fest" data-months="5,6">
+          <figure><img src="images/fest-ganga-dawn.jpg" alt="Priests at the river's edge at dawn" loading="lazy" width="1400" height="961" /></figure>
+          <p class="fest-when">Jyeshtha · May – June</p>
+          <h3>Ganga Dussehra</h3>
+          <p>The day the Ganga is said to have come down to earth. Bathers fill the ghats at dawn, and lamps float on the river at dusk.</p>
+          <a class="fest-link" data-wa="Namaste! I'd like to plan a trip around Ganga Dussehra." href="#contact">Plan around this →</a>
+        </article>
+        <article class="fest" data-months="9,10">
+          <div class="fest-mark"><span class="fm-en">Sep – Oct</span><span class="fm-hi" lang="hi">आश्विन</span></div>
+          <p class="fest-when">About a month · Ramnagar</p>
+          <h3>Ramnagar Ramlila</h3>
+          <p>The Ramayana performed across the town of Ramnagar for about a month, as it has been for nearly two centuries, with the Kashi Naresh in attendance.</p>
+          <a class="fest-link" data-wa="Namaste! I'd like to see the Ramnagar Ramlila." href="#contact">Plan around this →</a>
+        </article>
+        <article class="fest" data-months="10">
+          <div class="fest-mark"><span class="fm-en">October</span><span class="fm-hi" lang="hi">आश्विन</span></div>
+          <p class="fest-when">Day after Dussehra · Nati Imli</p>
+          <h3>Bharat Milap</h3>
+          <p>Huge crowds gather at Nati Imli to watch Ram embrace his brother Bharat after fourteen years. One of the city's best-loved days.</p>
+          <a class="fest-link" data-wa="Namaste! I'd like to plan a trip around Bharat Milap at Nati Imli." href="#contact">Plan around this →</a>
+        </article>
+        <article class="fest" data-months="10,11">
+          <div class="fest-mark"><span class="fm-en">Oct – Nov</span><span class="fm-hi" lang="hi">कार्तिक</span></div>
+          <p class="fest-when">Kartik · Tulsi Ghat</p>
+          <h3>Nag Nathaiya</h3>
+          <p>For one evening the Ganga becomes the Yamuna, as a young Krishna leaps in to subdue the serpent Kaliya, watched from the packed ghats.</p>
+          <a class="fest-link" data-wa="Namaste! I'd like to see Nag Nathaiya at Tulsi Ghat." href="#contact">Plan around this →</a>
+        </article>
+        <article class="fest" data-months="11">
+          <figure><img src="images/fest-diyas.jpg" alt="Lit clay diyas on a tray with flower petals" loading="lazy" width="1400" height="933" /></figure>
+          <p class="fest-when">Kartik Purnima · November</p>
+          <h3>Dev Deepawali</h3>
+          <p>Fifteen days after Diwali, the gods are said to come down to bathe, and every ghat is lit with lakhs of diyas. Book months ahead.</p>
+          <a class="fest-link" data-wa="Namaste! I'd like to plan a trip for Dev Deepawali." href="#contact">Plan around this →</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ GHATS ============ -->
+    <section class="ghats" id="ghats">
+      <div class="wrap">
+        <header class="sec-head">
+          <p class="kicker light" data-hi="गंगा के किनारे">Along the river</p>
+          <h2 data-hi="चौरासी घाट,<br/><em>हर घाट की एक कहानी।</em>">Eighty-four ghats,<br/><em>a story at each.</em></h2>
+          <p>From Assi in the south to Raj Ghat in the north, the steps run for nearly seven kilometres. These are the ones we stop at, walking north with the river.</p>
+        </header>
+      </div>
+      <ol class="ghat-track" tabindex="0" aria-label="Ghats of Banaras, scroll sideways">
+        <li><span class="g-num">01</span><h3>Assi</h3><p>Where the little Assi stream meets the Ganga. Mornings begin here with Subah-e-Banaras.</p></li>
+        <li><span class="g-num">02</span><h3>Tulsi</h3><p>Where Tulsidas is said to have written much of the Ramcharitmanas. Home to Nag Nathaiya and the Dhrupad Mela.</p></li>
+        <li><span class="g-num">03</span><h3>Chet Singh</h3><p>A riverside fort where Raja Chet Singh fought the forces of Warren Hastings in 1781.</p></li>
+        <li><span class="g-num">04</span><h3>Darbhanga</h3><p>A grand sandstone palace built by the Darbhanga royals, one of the most striking facades on the river.</p></li>
+        <li><span class="g-num">05</span><h3>Dashashwamedh</h3><p>Where Brahma is said to have performed ten horse sacrifices. The evening aarti happens here.</p></li>
+        <li><span class="g-num">06</span><h3>Man Mandir</h3><p>Raja Man Singh's palace, with an 18th-century observatory built on its roof by Sawai Jai Singh II.</p></li>
+        <li class="g-quiet"><span class="g-num">07</span><h3>Manikarnika</h3><p>The great cremation ghat, where the fires are said never to go out. We pass quietly, and we don't take photographs here.</p></li>
+        <li><span class="g-num">08</span><h3>Scindia</h3><p>Its Shiva temple sank into the riverbed as it was being built, and still leans half under the water.</p></li>
+        <li><span class="g-num">09</span><h3>Panchganga</h3><p>Where five rivers are said to meet. In the month of Kartik, its tall lamp towers are lit every evening.</p></li>
+      </ol>
+      <div class="wrap center ghats-cta">
+        <a class="btn btn-gold" data-wa="Namaste! I'd like a private sunrise boat along the ghats with a storyteller." href="#contact" data-hi="घाटों पर सूर्योदय नाव बुक करें">Book a sunrise boat along the ghats</a>
+      </div>
+    </section>
+
+    <!-- ============ SARNATH ============ -->
+    <section class="section sarnath" id="sarnath">
+      <div class="wrap sarnath-grid">
+        <figure class="sarnath-img">
+          <img src="images/sarnath-stupa.jpg" alt="The Dhamek Stupa at Sarnath in morning light" loading="lazy" width="1600" height="1067" />
+          <svg class="dharma" viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="50" cy="50" r="44"/><circle cx="50" cy="50" r="38"/><circle cx="50" cy="50" r="7"/><g id="spokes"><path d="M50 12v31M50 57v31M12 50h31M57 50h31M23.1 23.1l22 22M54.9 54.9l22 22M76.9 23.1l-22 22M45.1 54.9l-22 22"/><path d="M35.5 14.9l11.8 28.5M52.7 56.6l11.8 28.5M14.9 64.5l28.5-11.8M56.6 47.3l28.5-11.8M14.9 35.5l28.5 11.8M56.6 52.7l28.5 11.8M35.5 85.1l11.8-28.5M52.7 43.4l11.8-28.5"/></g></g></svg>
+        </figure>
+        <div class="sarnath-text">
+          <p class="kicker" data-hi="सारनाथ">Sarnath · सारनाथ</p>
+          <h2 data-hi="जहाँ धर्मचक्र<br/><em>पहली बार घूमा।</em>">Where the wheel<br/><em>first turned.</em></h2>
+          <p class="sarnath-lead">About ten kilometres from the ghats, in a deer park then called Isipatana, the Buddha gave his first sermon to five companions. It set the Wheel of Dharma turning, and pilgrims have come here ever since.</p>
+          <dl class="sarnath-list">
+            <div><dt>Dhamek Stupa</dt><dd>A great stupa of brick and carved stone marking the place of the first sermon. Its present form dates from around the 5th–6th century.</dd></div>
+            <div><dt>The Lion Capital</dt><dd>Four lions back to back, carved in polished sandstone for Emperor Ashoka in the 3rd century BCE. It is India's national emblem, and you can stand before the original in the Sarnath Museum.</dd></div>
+            <div><dt>Mulagandha Kuti Vihara</dt><dd>A temple consecrated in 1931, its walls painted with the life of the Buddha by the Japanese artist Kosetsu Nosu.</dd></div>
+            <div><dt>The monasteries</dt><dd>Thai, Tibetan, Japanese, Chinese and Burmese temples, each in its own style, a short walk from one another.</dd></div>
+          </dl>
+          <p class="welcomes" aria-label="Welcome in several languages">Sawasdee · Yōkoso · Hwanyeong · Āyubōwan · Tashi delek</p>
+          <p class="sarnath-note">We welcome pilgrims from Thailand, Japan, Korea, Sri Lanka, Bhutan and beyond, and arrange monastery visits, meditation sessions and guides who know the sutras.</p>
+          <a class="btn btn-maroon" data-wa="Namaste Babu Banarasi! I'd like to plan a Sarnath pilgrimage." href="#contact" data-hi="सारनाथ यात्रा प्लान करें">Plan a Sarnath pilgrimage</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ VOICES OF BANARAS ============ -->
+    <section class="section voices" id="voices">
+      <div class="wrap">
+        <header class="sec-head center">
+          <p class="kicker" data-hi="बनारस की आवाज़ें">Voices of Banaras</p>
+          <h2 data-hi="इस शहर ने<br/><em>बहुतों को गढ़ा।</em>">The city that<br/><em>shaped them.</em></h2>
+        </header>
+
+        <figure class="doha">
+          <blockquote lang="hi">पोथी पढ़ि पढ़ि जग मुआ, पंडित भया न कोय।<br/>ढाई आखर प्रेम का, पढ़े सो पंडित होय॥</blockquote>
+          <p class="doha-en">The whole world read books and died, and none became wise.<br/>Whoever reads the two and a half letters of <em>prem</em>, love, is wise.</p>
+          <figcaption>Kabir, the weaver-poet of Banaras · 15th century</figcaption>
+        </figure>
+
+        <ul class="voice-grid">
+          <li><p class="v-years">16th century</p><h3>Tulsidas</h3><p>Is said to have written much of the Ramcharitmanas at the ghat that carries his name. The Ramlila of Ramnagar still follows his verses.</p></li>
+          <li><p class="v-years">1827</p><h3>Mirza Ghalib</h3><p>Passed through on his way to Calcutta and wrote <em>Chiragh-e-Dair</em>, “The Lamp of the Temple”, a Persian poem in praise of Banaras.</p></li>
+          <li><p class="v-years">1880 – 1936</p><h3>Munshi Premchand</h3><p>Born in Lamhi, a village just outside the city, he wrote the lives of ordinary people into Hindi and Urdu literature.</p></li>
+          <li><p class="v-years">1916 – 2006</p><h3>Ustad Bismillah Khan</h3><p>Played his shehnai at the temples and ghats of Banaras for decades, and never agreed to leave the city, or its Ganga, for anywhere else.</p></li>
+          <li><p class="v-years">1920 – 2012</p><h3>Pandit Ravi Shankar</h3><p>Born in Banaras, he carried the sitar and the ragas of India to concert halls around the world.</p></li>
+          <li><p class="v-years">1929 – 2017</p><h3>Girija Devi</h3><p>The “Queen of Thumri”, who took the Banaras gharana's songs of longing and monsoon to stages everywhere.</p></li>
+        </ul>
+
+        <figure class="twain">
+          <blockquote>“Benares is older than history, older than tradition, older even than legend, and looks twice as old as all of them put together.”</blockquote>
+          <figcaption>Mark Twain · <em>Following the Equator</em>, 1897</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ============ STAYS ============ -->
+    <section class="section section-ivory-deep" id="stays">
+      <div class="wrap">
+        <header class="sec-head">
+          <p class="kicker" data-hi="II · ठहराव">II · Stays</p>
+          <h2 data-hi="घाटों के पास एक घर।<br/><em>स्तूपों के पास सुकून।</em>">A home by the ghats.<br/><em>Calm by the stupas.</em></h2>
+          <p data-hi="छोटे, अपने-से ठहराव, जिनका ख़याल हम अपने घर की तरह रखते हैं। व्हाट्सऐप पर एक निजी सहायक, एयरपोर्ट पिकअप से आपकी आख़िरी आरती तक।">Small, characterful stays, looked after like our own home. A personal concierge on WhatsApp, from airport pickup to your last aarti.</p>
+        </header>
+
+        <div class="stay-grid">
+          <article class="stay">
+            <figure><img src="images/room-1.jpg" alt="Warm, elegant guest bedroom" loading="lazy" width="1400" height="1050" /></figure>
+            <div class="stay-body">
+              <p class="stay-loc">Assi · Shivala, Varanasi</p>
+              <h3>The Ghat House</h3>
+              <p>Walk down to the river at first light and wake to temple bells. For seekers, families and slow travellers.</p>
+            </div>
+          </article>
+          <article class="stay">
+            <figure><img src="images/sarnath-monks.jpg" alt="Monks meditating at Sarnath" loading="lazy" width="1400" height="933" /></figure>
+            <div class="stay-body">
+              <p class="stay-loc">Sarnath</p>
+              <h3>The Sarnath Retreat</h3>
+              <p>Quiet rooms minutes from the Dhamek Stupa. For pilgrims, meditators and heritage travellers.</p>
+            </div>
+          </article>
+        </div>
+
+        <ul class="included">
+          <li><strong>Airport &amp; station pickup</strong>From VNS and Varanasi Cantt</li>
+          <li><strong>Escort through the ghat lanes</strong>E-rickshaw and porter to your door</li>
+          <li><strong>Always-on comforts</strong>Power backup, Wi-Fi, RO water, hot showers</li>
+          <li><strong>A caretaker on site</strong>Someone who knows the city, day and night</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ PANTRY ============ -->
+    <section class="pantry" id="pantry">
+      <div class="pantry-grid">
+        <figure class="pantry-img">
+          <img src="images/spices.jpg" alt="Whole spices and grains arranged on a table" loading="lazy" width="1400" height="987" />
+          <span class="badge">Coming soon</span>
+        </figure>
+        <div class="pantry-text">
+          <p class="kicker" data-hi="III · रसोई भंडार">III · The Pantry</p>
+          <h2 data-hi="हमारी मिट्टी से<br/><em>आपकी रसोई तक।</em>">From our soil<br/><em>to your kitchen.</em></h2>
+          <p>Banaras has always eaten from the land around it. Our pantry brings that home: staples grown on our own farm, with every seed, input and harvest written down so you know exactly where your food began.</p>
+          <ul class="pantry-points">
+            <li>Grown on our own land, with no middlemen</li>
+            <li>Every batch traceable from field to pack</li>
+            <li>Packed in small batches, shipped across India</li>
+          </ul>
+        </div>
+      </div>
+      <div class="wrap pantry-first">
+        <p class="kicker">The first jars off the farm</p>
+        <ul class="pantry-products">
+          <li><span class="pp-when">Pre-order · June – July</span><h3>Langda mangoes</h3><p>Boxes of Banaras's own mango, picked at the right moment and sent straight from the orchard.</p></li>
+          <li><span class="pp-when">Holi &amp; summer</span><h3>Thandai masala</h3><p>Almonds, fennel, rose, poppy seeds and black pepper, ground in small batches the old way.</p></li>
+          <li><span class="pp-when">Sun-cured</span><h3>Ghar ka achaar</h3><p>Mango and lemon pickles in mustard oil, made to a family recipe and cured in the sun.</p></li>
+          <li><span class="pp-when">From our fields</span><h3>Stone-ground atta</h3><p>Wheat from our own farm, ground slowly so it keeps its flavour and goodness.</p></li>
+        </ul>
+        <div class="center">
+          <a class="btn btn-maroon" data-wa="Namaste Babu Banarasi! Please add me to the Pantry list. I'm interested in: " href="#contact" data-hi="पैंट्री सूची में मुझे जोड़ें">Add me to the Pantry list</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ JOURNAL ============ -->
+    <section class="section" id="journal">
+      <div class="wrap">
+        <header class="sec-head center">
+          <p class="kicker" data-hi="जर्नल">The Journal</p>
+          <h2 data-hi="अपनी बनारसी को जानिए।">Know your Banarasi.</h2>
+          <p>What our weavers and hosts would tell you over a cup of chai.</p>
+        </header>
+        <div class="journal-grid">
+          <details class="journal">
+            <summary><span class="j-tag">Buying guide</span><h3>Pure silk or synthetic? How to tell</h3></summary>
+            <p>Feel it first: pure silk warms to the touch and has a soft, dry rustle. Look for the Silk Mark tag. Then the thread burn test: real silk smells like burnt hair and leaves a fine ash that crumbles, while polyester melts into a hard bead and smells of plastic.</p>
+          </details>
+          <details class="journal">
+            <summary><span class="j-tag">Care</span><h3>Caring for a heritage handloom</h3></summary>
+            <p>Dry-clean only. Wrap it in soft muslin, never plastic. Refold it along new lines every few months so the zari doesn't crack, and keep it away from perfume and direct sun. Looked after this way, a Banarasi saree can be handed down to the next generation.</p>
+          </details>
+          <details class="journal">
+            <summary><span class="j-tag">Travel</span><h3>When to visit Banaras</h3></summary>
+            <p>October to March is the most pleasant, with misty winter mornings and malaiyo in the lanes. Dev Deepawali and Mahashivratri are unforgettable, so write to us early for both. Summers are hot, but bring mangoes, lassi and the Sankat Mochan music festival.</p>
+          </details>
+          <details class="journal">
+            <summary><span class="j-tag">Bridal</span><h3>Commissioning a bridal saree</h3></summary>
+            <p>A made-to-order bridal Katan usually needs several weeks on the loom. Share your colours, motifs and date with us, and we'll sit with the weaver to design it with you over video call.</p>
+          </details>
+          <details class="journal">
+            <summary><span class="j-tag">Etiquette</span><h3>Visiting the ghats and temples</h3></summary>
+            <p>Dress modestly and take your shoes off where others do. Ask before photographing people, and never photograph at Manikarnika or Harishchandra, the cremation ghats. Phones and bags aren't allowed inside Kashi Vishwanath, so we'll arrange a locker.</p>
+          </details>
+          <details class="journal">
+            <summary><span class="j-tag">Travel</span><h3>Getting around the old city</h3></summary>
+            <p>The galis are too narrow for cars, so the best way is on foot, with an e-rickshaw to the edge of the old city. The river is the easiest road of all: a boat between ghats is faster than any lane.</p>
+          </details>
+        </div>
+
+        <!-- Banarasi phrases -->
+        <div class="phrases">
+          <h3 data-hi="थोड़ी बनारसी बोली">A little Banarasi for your trip</h3>
+          <ul>
+            <li><strong>Ka ho, Guru?</strong><span>How's it going, friend? The city's favourite greeting.</span></li>
+            <li><strong>Raja</strong><span>What a Banarasi calls a friend, a stranger, or the paanwala.</span></li>
+            <li><strong>Gazab!</strong><span>Amazing! Said about a good kachori, mostly.</span></li>
+            <li><strong>Har Har Mahadev</strong><span>A greeting, a blessing and a cheer, all at once.</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ QUOTE BAND ============ -->
+    <section class="quote-band">
+      <img src="images/ghats-morning.jpg" alt="" loading="lazy" width="1800" height="1200" />
+      <div class="quote-veil"></div>
+      <div class="wrap quote-content">
+        <p lang="hi" class="quote-hi">बनारस शहर नहीं, एक एहसास है।</p>
+        <p class="quote-en">Banaras isn't a city. It's a feeling.</p>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="section contact" id="contact">
+      <div class="wrap contact-grid">
+        <div>
+          <p class="kicker" data-hi="नमस्ते कहिए">Say Namaste</p>
+          <h2 data-hi="बाबू से बात कीजिए।">Talk to Babu.</h2>
+          <p class="contact-lead">Whether it's a bridal saree, a week in Kashi or a jar from the farm, write to us. Someone from our family in Banaras will reply.</p>
+          <ul class="contact-lines">
+            <li><span>WhatsApp</span><a data-wa="Namaste Babu Banarasi!" href="#contact" class="js-phone">+91 92609 84531</a></li>
+            <li><span>Call</span><a href="tel:+919260984531" class="js-phone">+91 92609 84531</a></li>
+            <li><span>Email</span><a href="mailto:namaste@babubanarasi.com">namaste@babubanarasi.com</a></li>
+            <li><span>Instagram</span><a href="https://instagram.com/babubanarasi" target="_blank" rel="noopener">@babubanarasi</a></li>
+          </ul>
+        </div>
+
+        <form class="enquiry" id="enquiry-form" novalidate>
+          <p class="form-title" data-hi="हमें एक संदेश भेजें">Send us a note</p>
+          <label>Your name
+            <input type="text" name="name" required autocomplete="name" />
+          </label>
+          <label>I'm interested in
+            <select name="interest">
+              <option>Handloom sarees &amp; weaves</option>
+              <option>A bridal / made-to-order saree</option>
+              <option>A stay in Varanasi or Sarnath</option>
+              <option>Experiences &amp; tours</option>
+              <option>A festival trip</option>
+              <option>A Sarnath pilgrimage</option>
+              <option>A food trail or cooking class</option>
+              <option>The Pantry</option>
+              <option>Something else</option>
+            </select>
+          </label>
+          <label>Dates or details <span class="opt">(optional)</span>
+            <textarea name="message" rows="3" placeholder="e.g. 3 nights in December, 2 adults, a sunrise boat"></textarea>
+          </label>
+          <button type="submit" class="btn btn-maroon btn-full" data-hi="व्हाट्सऐप पर भेजें">Send on WhatsApp</button>
+          <p class="form-note">Opens WhatsApp with your note ready to send.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-brand">
+        <span class="brand-en">Babu Banarasi</span>
+        <p lang="hi">काशी की पूरी अनुभूति, दुनिया के लिए</p>
+      </div>
+      <nav class="footer-nav" aria-label="Footer">
+        <a href="#day">A Day in Kashi</a><a href="#weaves">The Weaves</a><a href="#khana">Banarasi Khana</a><a href="#experiences">Experiences</a><a href="#festivals">Festivals</a><a href="#sarnath">Sarnath</a><a href="#stays">Stays</a><a href="#pantry">Pantry</a><a href="#journal">Journal</a><a href="#contact">Contact</a>
+      </nav>
+      <p class="footer-hhm" lang="hi">हर हर महादेव</p>
+      <p class="copy">© <span id="year"></span> Babu Banarasi · Varanasi, India</p>
+    </div>
+  </footer>
+
+  <a class="wa-float" data-wa="Namaste Babu Banarasi!" href="#contact" aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16 3C9 3 3.3 8.6 3.3 15.6c0 2.4.7 4.7 1.9 6.6L3 29l7-2.2c1.8 1 3.9 1.5 6 1.5 7 0 12.7-5.7 12.7-12.7S23 3 16 3zm0 23.1c-1.9 0-3.8-.5-5.4-1.5l-.4-.2-4.1 1.3 1.3-4-.3-.4c-1.1-1.700-1.700-3.700-1.700-5.700C5.4 9.8 10.2 5.1 16 5.1s10.6 4.7 10.6 10.5S21.8 26.1 16 26.1zm5.8-7.8c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.3-.5-2.5-1.6-.9-.8-1.6-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.6c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.200 1.1-1.200 2.8s1.2 3.2 1.4 3.4c.2.2 2.4 3.6 5.7 5 .8.3 1.4.5 1.9.7.8.3 1.5.2 2.1.1.6-.1 1.9-.8 2.2-1.5.3-.7.3-1.4.2-1.5-.1-.2-.3-.3-.6-.4z"/></svg>
+  </a>
+
+  <script src="script.js?v=7"></script>
+  <script src="interactions.js?v=2"></script>
+</body>
+</html>
