@@ -13,7 +13,7 @@
 window.BB_CONFIG = {
   // LIVE: false keeps accounts and online payment hidden on babubanarasi.com
   // (they still work on http://localhost for testing). Set to true to switch them on for customers.
-  LIVE: false,
+  LIVE: true,
   SUPABASE_URL: "https://vudfuwpyoczheisrsxbf.supabase.co",
   SUPABASE_ANON_KEY: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ1ZGZ1d3B5b2N6aGVpc3JzeGJmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTUyNzQ0MjMsImV4cCI6MjExMDg1MDQyM30.EnMtrVMgunAeBaBxoGH9qjaGXj3r5RB8QSIY8Oll72c",
   RAZORPAY_KEY_ID: "rzp_live_U2u29RDBpeaRGa",
