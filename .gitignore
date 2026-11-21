@@ -1,2 +1,9 @@
 README.md
 .DS_Store
+# Shop: kept off the live site until real products replace the samples
+shop.html
+product.html
+checkout.html
+shop.js
+shop.css
+products.json

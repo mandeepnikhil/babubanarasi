@@ -1,0 +1,10 @@
+{
+  "name": "Babu Banarasi",
+  "short_name": "Babu Banarasi",
+  "description": "Handloom Banarasi sarees, stays and experiences from Varanasi.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#faf6ee",
+  "theme_color": "#4a1020",
+  "icons": [{ "src": "favicon.svg", "sizes": "any", "type": "image/svg+xml" }]
+}
