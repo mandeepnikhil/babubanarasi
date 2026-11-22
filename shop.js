@@ -62,6 +62,8 @@ const SHOP = {
     const capped = Math.min(want, maxQty(p));
     if (line) line.qty = capped; else cart.push({ id, qty: capped });
     saveCart();
+    const added = capped - (want - qty);
+    if (added > 0) window.BB_TRACK?.("AddToCart", { ids: [p.id], name: p.name, value: p.price * added });
     if (capped < want) toast(`Only ${maxQty(p)} available, so your bag has the most we can offer.`);
     else toast("Added to your bag");
     if (open) openBag();
@@ -297,6 +299,7 @@ const SHOP = {
       wireWa($("#related-grid"));
       return;
     }
+    window.BB_TRACK?.("ViewContent", { ids: [p.id], name: p.name, value: p.price });
     const a = availability(p);
     document.title = `${p.name} | Handloom Banarasi Saree | Babu Banarasi`;
     $('meta[name="description"]').setAttribute("content", `${p.short} ${p.fabric}, hand-woven in Varanasi. ${inr(p.price)}.`);
@@ -530,6 +533,7 @@ const SHOP = {
     form.elements.gift.addEventListener("change", () => { renderSummary(); syncButton(); });
     $$('input[name="pay"]').forEach((r) => r.addEventListener("change", syncButton));
     if (!renderSummary()) return;
+    window.BB_TRACK?.("InitiateCheckout", { ids: cartItems().map((c) => c.p.id), value: totals().total });
     syncCountry();
 
     // Validation
@@ -582,6 +586,8 @@ const SHOP = {
     };
     const confirmScreen = (id, link, kind) => {
       // kind: "whatsapp" | "paid" | "check"
+      const ids = cartItems().map((c) => c.p.id), value = totals().total;
+      window.BB_TRACK?.(kind === "whatsapp" ? "Lead" : "Purchase", { ids, value, orderId: id });
       store.set("bb-last-order", { id, at: Date.now() });
       cart = []; saveCart();
       const copy = {

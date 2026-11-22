@@ -45,6 +45,7 @@ const SITE = {
     const msg = form.elements.message.value.trim();
     if (msg) lines.push(`Details: ${msg}`);
     const link = waLink(lines.join("\n"));
+    window.BB_TRACK?.("Lead", { name: form.elements.interest.value });
     window.open(link, "_blank", "noopener");
     let note = form.querySelector(".form-sent");
     if (!note) { note = document.createElement("p"); note.className = "form-sent"; note.setAttribute("role", "status"); form.appendChild(note); }

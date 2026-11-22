@@ -19,6 +19,11 @@ window.BB_CONFIG = {
   RAZORPAY_KEY_ID: "rzp_live_U2xLs04hsyAl5v",
   // Which sign-in methods to show (turn each on in Supabase → Authentication → Providers first)
   // Social profiles shown in the footer. Paste the full https:// link; leave "" to hide one.
-  SOCIAL: { instagram: "https://www.instagram.com/man_its_deep/", facebook: "", youtube: "" },
+  SOCIAL: { instagram: "https://www.instagram.com/babubanarasi_official/", facebook: "", x: "", youtube: "" },
+  // Ad measurement. Leave "" and nothing loads. Visitors are asked before either one runs.
+  // META_PIXEL_ID: Meta Events Manager → Data sources → your dataset/pixel → the number under its name
+  // GOOGLE_TAG_ID: Google Ads → Goals → Google tag (starts with AW-), or a GA4 ID (starts with G-)
+  META_PIXEL_ID: "",
+  GOOGLE_TAG_ID: "",
   AUTH_METHODS: { google: true, microsoft: false, emailCode: true, password: true, phone: false }, // microsoft, phone: switch on once each provider is set up in Supabase
 };
