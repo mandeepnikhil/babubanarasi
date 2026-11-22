@@ -1053,3 +1053,20 @@ h1.v-title { font-size: clamp(2.2rem, 4.6vw, 3.7rem); color: var(--burgundy); fo
 .shop-topbar:has(.topbar-account) { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
 /* Search results land on a card: keep it clear of the sticky header */
 [data-search], #weaves, #finder, #contact, #footer-contact { scroll-margin-top: 110px; }
+
+/* About page */
+.founder-role { font-size: .78rem !important; letter-spacing: .2em; text-transform: uppercase; color: var(--gold) !important; margin-top: -14px; }
+.founder-li { display: inline-flex; align-items: center; gap: 10px; margin-top: 18px; }
+.founder-li svg { width: 18px; height: 18px; }
+.founder-photo { width: 100%; }
+.founder-photo img { aspect-ratio: 4/5; object-fit: cover; width: 100%; }
+.ph-photo { width: 100%; aspect-ratio: 4/5; display: grid; place-items: center; background: var(--ivory-deep); border: 1px dashed var(--hair); }
+.ph { background: #fff3c4; color: #6b4b00; padding: 0 4px; font-style: normal; }
+@media (min-width: 861px) { .founder-grid { grid-template-columns: .8fr 1.2fr; } }
+.founder-links { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 26px; margin-top: 18px; }
+.founder-links .founder-li { margin-top: 0; }
+.founder-ig { display: inline-flex; align-items: center; gap: 8px; color: var(--burgundy); font-size: .78rem; letter-spacing: .2em; text-transform: uppercase; border-bottom: 1px solid var(--gold); padding-bottom: 3px; }
+.founder-ig svg { width: 17px; height: 17px; }
+.founder-ig:hover { color: var(--gold); }
+.fixes .fx-was { display: block; font-size: .7rem; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); text-decoration: line-through; text-decoration-color: var(--gold); margin-bottom: 6px; }
+.founder-photo img { object-position: center 30%; }

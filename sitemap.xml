@@ -31,6 +31,13 @@
     <image:image><image:loc>https://babubanarasi.com/images/spices.jpg</image:loc></image:image>
   </url>
   <url>
+    <loc>https://babubanarasi.com/about.html</loc>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://babubanarasi.com/images/founder-mandeep.jpg</image:loc></image:image>
+  </url>
+  <url>
     <loc>https://babubanarasi.com/guides.html</loc>
     <lastmod>2026-11-21</lastmod>
     <changefreq>monthly</changefreq>
