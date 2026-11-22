@@ -31,7 +31,7 @@ Deno.serve(async (req) => {
   if (evt.event === "payment.captured" || evt.event === "order.paid") {
     await admin.from("orders")
       .update({ status: "paid", razorpay_payment_id: payment?.id ?? null, updated_at: now })
-      .eq("razorpay_order_id", rzpOrderId).neq("status", "paid");
+      .eq("razorpay_order_id", rzpOrderId).in("status", ["created", "failed"]);
   } else if (evt.event === "payment.failed") {
     await admin.from("orders")
       .update({ status: "failed", updated_at: now })

@@ -1,7 +1,7 @@
 // create-order: prices the bag on the server, records the order, and (for online
 // payment) creates a Razorpay order. The browser never decides the amount.
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.45.4";
-import { cors, json } from "../_shared/http.ts";
+import { cors, json, rateLimited } from "../_shared/http.ts";
 
 const SITE_URL = Deno.env.get("SITE_URL") ?? "https://babubanarasi.com";
 const SHIPPING_INDIA = Number(Deno.env.get("SHIPPING_INDIA") ?? "0");
@@ -30,6 +30,11 @@ Deno.serve(async (req) => {
     const admin = createClient(Deno.env.get("SUPABASE_URL")!, Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!, {
       auth: { persistSession: false },
     });
+
+    // At most 10 orders per visitor every 10 minutes: stops someone flooding the order list
+    if (await rateLimited(admin, req, "create-order", 10, 600)) {
+      return json(req, { error: "You've placed several orders in a few minutes. Please wait a little, or message us on WhatsApp." }, 429);
+    }
 
     // Signed-in customer (optional: guests can order too)
     let userId: string | null = null;

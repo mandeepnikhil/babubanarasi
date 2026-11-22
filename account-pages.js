@@ -322,11 +322,11 @@
     else if (!orders.length) box.innerHTML = `<div class="acct-empty"><p>No orders yet.</p><a class="btn btn-maroon" href="shop.html">Browse the sarees</a></div>`;
     else box.innerHTML = `<ul class="orders">${orders.map((o) => {
       const [label, cls] = STATUS[o.status] || [o.status, "wait"];
-      const items = (o.items || []).map((i) => `${esc(i.name)} × ${i.qty}`).join(", ");
+      const items = (o.items || []).map((i) => `${esc(i.name)} × ${esc(i.qty)}`).join(", ");
       const when = new Date(o.created_at).toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" });
       const wa = `https://wa.me/919260984531?text=${encodeURIComponent(`Namaste! I'd like an update on my order ${o.id}.`)}`;
       return `<li class="order">
-        <div class="order-top"><strong>${esc(o.id)}</strong><span class="order-status ${cls}">${label}</span></div>
+        <div class="order-top"><strong>${esc(o.id)}</strong><span class="order-status ${esc(cls)}">${esc(label)}</span></div>
         <p class="order-items">${items}</p>
         <div class="order-bottom"><span>${when} · ${inr(o.total)}${o.payment_method === "razorpay" ? " · paid online" : ""}</span><a href="${wa}" target="_blank" rel="noopener">Ask about this order →</a></div>
       </li>`;

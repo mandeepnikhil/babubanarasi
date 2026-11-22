@@ -29,7 +29,9 @@ Deno.serve(async (req) => {
       .eq("id", String(orderId)).eq("razorpay_order_id", String(razorpay_order_id)).maybeSingle();
     if (error || !order) return json(req, { error: "Order not found." }, 404);
 
-    if (order.status !== "paid") {
+    // Only an order still waiting for payment moves to paid. A late or repeated
+    // confirmation never drags a shipped, delivered or cancelled order back.
+    if (order.status === "created" || order.status === "failed") {
       const { error: upd } = await admin.from("orders")
         .update({ status: "paid", razorpay_payment_id, updated_at: new Date().toISOString() })
         .eq("id", order.id);

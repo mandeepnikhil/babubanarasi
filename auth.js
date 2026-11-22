@@ -8,10 +8,13 @@
   const isLocal = ["localhost", "127.0.0.1"].includes(location.hostname);
   const configured = !!(cfg.SUPABASE_URL && cfg.SUPABASE_ANON_KEY && (cfg.LIVE || isLocal));
   const SUPABASE_CDN = "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js";
+  // Fingerprint of that exact file: if the CDN ever served anything else, the browser refuses to run it
+  const SUPABASE_SRI = "sha384-GFr3yTh5lJznCbZfpTtXnwboFsxqtTQoeTZCRHhE0579KrRmlCzen5AA8ohaB5ug";
 
-  const loadScript = (src) => new Promise((res, rej) => {
+  const loadScript = (src, integrity) => new Promise((res, rej) => {
     const s = document.createElement("script");
     s.src = src; s.onload = res; s.onerror = rej;
+    if (integrity) { s.integrity = integrity; s.crossOrigin = "anonymous"; }
     document.head.appendChild(s);
   });
 
@@ -35,7 +38,7 @@
   const ready = (async () => {
     if (!configured) return state;
     try {
-      await loadScript(SUPABASE_CDN);
+      await loadScript(SUPABASE_CDN, SUPABASE_SRI);
       state.client = window.supabase.createClient(cfg.SUPABASE_URL, cfg.SUPABASE_ANON_KEY, {
         // In-tab lock: a frozen background tab can't hold up sign-in in this one
         auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true, lock: tabLock },

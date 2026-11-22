@@ -1,3 +1,6 @@
 README.md
 .DS_Store
 DESIGN-BRIEF.md
+supabase/.temp/
+.env
+.env.*
