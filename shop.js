@@ -146,14 +146,25 @@ const SHOP = {
   }
 
   /* ---------- Shared header bits ---------- */
-  const header = $(".site-header"), toggle = page === "home" ? null : $(".nav-toggle"); // the homepage menu is run by script.js
+  // Pages that load script.js (home and the four verticals) have their menu run there.
+  // Checked on click: when this file runs, later <script> tags aren't parsed yet.
+  const header = $(".site-header"), toggle = $(".nav-toggle");
   toggle?.addEventListener("click", () => {
+    if (document.querySelector('script[src^="script.js"]')) return;
     const open = !header.classList.contains("menu-open");
     header.classList.toggle("menu-open", open);
     toggle.setAttribute("aria-expanded", String(open));
   });
   $$("[data-wa]").forEach((el) => { el.href = wa(el.dataset.wa); el.target = "_blank"; el.rel = "noopener"; });
   const yr = $("#year"); if (yr) yr.textContent = new Date().getFullYear();
+
+  // Footer: social links appear only once they're filled in, in config.js
+  const social = Object.entries(CFG.SOCIAL || {}).filter(([, u]) => /^https:\/\//.test(u || ""));
+  const socBox = $(".footer-social");
+  if (socBox && social.length) {
+    $(".social-links", socBox).innerHTML = social.map(([n, u]) => `<a href="${esc(u)}" target="_blank" rel="noopener me">${esc(n[0].toUpperCase() + n.slice(1))}</a>`).join("");
+    socBox.hidden = false;
+  }
 
   /* ---------- Product card ---------- */
   const card = (p) => {

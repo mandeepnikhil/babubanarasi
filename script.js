@@ -26,12 +26,17 @@ const SITE = {
     header.classList.toggle("menu-open", open);
     toggle.setAttribute("aria-expanded", String(open));
   };
-  toggle.addEventListener("click", () => setMenu(!header.classList.contains("menu-open")));
+  toggle?.addEventListener("click", () => setMenu(!header.classList.contains("menu-open")));
   document.querySelectorAll(".mobile-nav a").forEach((a) => a.addEventListener("click", () => setMenu(false)));
 
   // Enquiry form → WhatsApp
   const form = document.getElementById("enquiry-form");
-  form.addEventListener("submit", (e) => {
+  // Each vertical page opens the form on its own topic
+  if (form?.dataset.interest) {
+    const want = form.dataset.interest, opt = [...form.elements.interest.options].find((o) => o.text === want);
+    if (opt) form.elements.interest.value = opt.value;
+  }
+  form?.addEventListener("submit", (e) => {
     e.preventDefault();
     const name = form.elements.name.value.trim();
     form.elements.name.classList.toggle("invalid", !name);
@@ -74,7 +79,7 @@ const SITE = {
     window.addEventListener("scroll", onScroll, { passive: true });
   }
 
-  document.getElementById("year").textContent = new Date().getFullYear();
+  const yearEl = document.getElementById("year"); if (yearEl) yearEl.textContent = new Date().getFullYear();
 
   /* ---------- Shared: today's date in Banaras (IST) ---------- */
   const IST = "Asia/Kolkata";

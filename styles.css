@@ -977,3 +977,79 @@ body::after { content: ""; position: fixed; inset: 0; pointer-events: none; z-in
   .topbar-mid { display: block; text-align: left; overflow: hidden; text-overflow: ellipsis; }
   .topbar-tools .sound-toggle { display: none; }
 }
+
+/* =====================================================
+   Site architecture: Home · Sarees · Stays · Experiences · Pantry
+   ===================================================== */
+/* Current page in the menus */
+.nav a[aria-current="page"] { color: var(--burgundy); }
+.nav a[aria-current="page"]::after { transform: scaleX(1); }
+.mobile-nav a[aria-current="page"] { color: var(--gold); }
+
+/* Vertical pages: the first section carries the breadcrumb, and starts closer to the header */
+main > section.v-first { padding-top: 34px; }
+.v-first .crumbs { padding: 0 0 40px; }
+.pantry.v-first > .wrap .crumbs { padding-bottom: 28px; }
+h1.v-title { font-size: clamp(2.2rem, 4.6vw, 3.7rem); color: var(--burgundy); font-weight: 400; }
+@media (max-width: 560px) { main > section.v-first { padding-top: 22px; } .v-first .crumbs { padding-bottom: 26px; } }
+
+/* Home: one search box for all four verticals, overlapping the hero */
+.home-search { position: relative; z-index: 6; margin-top: -48px; }
+.site-search { max-width: 780px; margin: 0 auto; background: var(--ivory); border: 1px solid var(--hair); box-shadow: 0 24px 48px -30px rgba(74,16,32,.45); padding: 18px 22px 20px; }
+.ss-label { display: block; font-size: .68rem; letter-spacing: .24em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+.ss-row { display: flex; align-items: center; gap: 12px; }
+.ss-icon { flex: none; width: 22px; height: 22px; color: var(--burgundy); }
+.ss-row input { flex: 1; min-width: 0; border: 0; border-bottom: 1px solid var(--hair); background: transparent; font: inherit; font-family: var(--serif); font-size: 1.3rem; color: var(--ink); padding: 8px 2px; border-radius: 0; -webkit-appearance: none; appearance: none; }
+.ss-row input:focus { outline: none; border-bottom-color: var(--burgundy); }
+.ss-row input::-webkit-search-cancel-button { cursor: pointer; }
+.ss-go { flex: none; padding-inline: 26px; }
+.ss-panel { margin-top: 14px; }
+.ss-status { font-size: .82rem; color: var(--muted); margin: 0 0 6px; }
+.ss-status a { color: var(--burgundy); border-bottom: 1px solid var(--gold); }
+.ss-results { list-style: none; margin: 0; padding: 0; max-height: 360px; overflow-y: auto; }
+.ss-results li a { display: grid; grid-template-columns: 104px 1fr; column-gap: 14px; padding: 11px 8px; border-top: 1px solid rgba(176,141,76,.2); color: var(--ink); }
+.ss-results li[aria-selected="true"] a, .ss-results li a:hover { background: var(--ivory-deep); }
+.ss-tag { grid-row: span 2; align-self: center; font-size: .64rem; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); }
+.ss-title { font-family: var(--serif); font-size: 1.12rem; color: var(--burgundy); line-height: 1.25; }
+.ss-desc { font-size: .8rem; color: var(--muted); }
+@media (max-width: 560px) {
+  .home-search { margin-top: -34px; }
+  .site-search { padding: 14px 14px 16px; }
+  .ss-go { padding-inline: 16px; }
+  .ss-row input { font-size: 1.1rem; }
+  .ss-icon { display: none; }
+  .ss-results li a { grid-template-columns: 1fr; }
+  .ss-tag { grid-row: auto; }
+}
+
+/* Home: four teaser cards */
+.teasers { padding: 100px 0 120px; }
+.pillar-grid-4 { grid-template-columns: repeat(4, 1fr); gap: 28px; }
+.pillar-grid-4 .pillar-img { position: relative; aspect-ratio: 4/5; }
+.pillar-grid-4 .pillar-img .badge { position: absolute; top: 14px; left: 14px; }
+.pillar-grid-4 .pillar h3 { font-size: 1.8rem; }
+.pillar-cta { display: inline-block; margin-top: 16px; color: var(--burgundy); font-size: .74rem; letter-spacing: .2em; text-transform: uppercase; border-bottom: 1px solid var(--gold); padding-bottom: 4px; }
+.pillar:hover .pillar-cta { color: var(--gold); }
+@media (max-width: 1080px) { .pillar-grid-4 { grid-template-columns: repeat(2, 1fr); gap: 48px 28px; } }
+@media (max-width: 560px) {
+  .teasers { padding: 64px 0 80px; }
+  .pillar-grid-4 { grid-template-columns: 1fr; gap: 48px; }
+  .pillar-grid-4 .pillar-img { aspect-ratio: 4/3; }
+}
+
+/* Footer: quick links, contact, social */
+.footer-cols { display: grid; grid-template-columns: repeat(3, auto); justify-content: center; gap: 30px 80px; margin: 46px 0 40px; text-align: left; }
+.footer-cols:has(.footer-social:not([hidden])) { grid-template-columns: repeat(4, auto); }
+.footer-col { display: flex; flex-direction: column; gap: 10px; font-size: .9rem; }
+.footer-h { font-size: .7rem; letter-spacing: .24em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 4px; }
+.footer-col a:hover { color: var(--gold-light); }
+.social-links { display: flex; flex-direction: column; gap: 10px; }
+@media (max-width: 760px) {
+  .footer-cols { grid-template-columns: 1fr 1fr; gap: 34px 24px; justify-content: stretch; }
+  .footer-cols:has(.footer-social:not([hidden])) { grid-template-columns: 1fr 1fr; }
+}
+
+/* Smaller pages: the account link sits in the slim top bar */
+.shop-topbar:has(.topbar-account) { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+/* Search results land on a card: keep it clear of the sticky header */
+[data-search], #weaves, #finder, #contact, #footer-contact { scroll-margin-top: 110px; }

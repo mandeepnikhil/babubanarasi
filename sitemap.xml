@@ -2,12 +2,33 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://babubanarasi.com/</loc>
-    <lastmod>2026-11-21</lastmod>
+    <lastmod>2026-11-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image><image:loc>https://babubanarasi.com/images/hero-ganga-sunset.jpg</image:loc></image:image>
     <image:image><image:loc>https://babubanarasi.com/images/saree-red.jpg</image:loc></image:image>
     <image:image><image:loc>https://babubanarasi.com/images/loom-weaver.jpg</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://babubanarasi.com/stays.html</loc>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image><image:loc>https://babubanarasi.com/images/room-1.jpg</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://babubanarasi.com/experiences.html</loc>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image><image:loc>https://babubanarasi.com/images/boat-sunrise.jpg</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://babubanarasi.com/pantry.html</loc>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://babubanarasi.com/images/spices.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://babubanarasi.com/guides.html</loc>
