@@ -19,6 +19,6 @@ window.BB_CONFIG = {
   RAZORPAY_KEY_ID: "rzp_live_U2xLs04hsyAl5v",
   // Which sign-in methods to show (turn each on in Supabase → Authentication → Providers first)
   // Social profiles shown in the footer. Paste the full https:// link; leave "" to hide one.
-  SOCIAL: { instagram: "", facebook: "", youtube: "" },
+  SOCIAL: { instagram: "https://www.instagram.com/man_its_deep/", facebook: "", youtube: "" },
   AUTH_METHODS: { google: true, microsoft: false, emailCode: true, password: true, phone: false }, // microsoft, phone: switch on once each provider is set up in Supabase
 };
